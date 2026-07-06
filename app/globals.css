@@ -1,26 +1,127 @@
 @import "tailwindcss";
 
+/* ── Almoni DL AAA ── */
+@font-face {
+  font-family: "Almoni";
+  src: url("/fonts/almoni-dl-aaa-light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Almoni";
+  src: url("/fonts/almoni-dl-aaa-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Almoni";
+  src: url("/fonts/almoni-dl-aaa-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Almoni";
+  src: url("/fonts/almoni-dl-aaa-black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Font */
+  --font-sans: var(--font-heebo), "Almoni", Arial, sans-serif;
+
+  /* Palette */
+  --color-bg: #000000;
+  --color-surface: #121212;
+  --color-gold: #c6a87a;
+  --color-accent: #cfbfba;
+  --color-accent-base: #cfbfba;
+  --color-light: #eeeeee;
+  --color-white: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Layout */
+.site-container {
+  max-width: 1500px;
+  margin-inline: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 1rem;
+  background-color: #000000;
+  color: #ffffff;
 }
+
+.title-h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.75rem, 3.5vw, var(--text-5xl));
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-wrap: balance;
+}
+
+@media (max-width: 640px) {
+  .title-h2 {
+    font-size: clamp(2rem, 4.8vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+}
+
+/* Blog article body — rendered HTML from CRM */
+.blog-body h1 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.875rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #ffffff;
+  margin: 1.5em 0 0.5em;
+}
+.blog-body h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 1.4em 0 0.5em;
+}
+.blog-body h3 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 1.2em 0 0.4em;
+}
+.blog-body p  { margin: 0.85em 0; line-height: 1.75; }
+.blog-body ul { list-style: disc; padding-inline-start: 1.5em; margin: 0.75em 0; }
+.blog-body ol { list-style: decimal; padding-inline-start: 1.5em; margin: 0.75em 0; }
+.blog-body li { margin: 0.3em 0; }
+.blog-body strong { font-weight: 700; color: #ffffff; }
+.blog-body em    { font-style: italic; }
+.blog-body a  { color: #cfbfba; text-decoration: underline; }
+.blog-body blockquote {
+  border-inline-start: 3px solid #cfbfba;
+  padding-inline-start: 1em;
+  color: #a0a0a0;
+  margin: 1em 0;
+  font-style: italic;
+}
+.blog-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1em 0;
+}
+.blog-body p::after { content: ""; display: table; clear: both; }

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n -i \"payper\" \"c:\\\\Users\\\\anton\\\\Desktop\\\\b2b\\\\B2BCRM\\\\CLAUDE.md\" 2>/dev/null | head -30)",
+      "Read(//c/Users/anton/Desktop/b2b/B2BCRM/**)",
+      "Bash(grep -n \"CartToast\\\\|showToast\" \"c:\\\\Users\\\\anton\\\\Desktop\\\\b2b\\\\polarizedx\\\\app\\\\layout.tsx\" 2>/dev/null; echo ---; cat \"c:\\\\Users\\\\anton\\\\Desktop\\\\b2b\\\\xvape\\\\app\\\\components\\\\CartToast.tsx\")",
+      "Read(//c/Users/anton/Desktop/b2b/xvape/app/components/**)"
+    ]
+  }
+}
