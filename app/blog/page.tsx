@@ -5,7 +5,7 @@ import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
 import { getBlogs, type BlogPost } from "../../lib/cms";
 
-const FALLBACK_IMAGE = "/images/mock-product.png";
+const FALLBACK_IMAGE = "/images/mockproduct.jpg";
 
 export const metadata: Metadata = {
   title: "הבלוג | POLARIZED-X",

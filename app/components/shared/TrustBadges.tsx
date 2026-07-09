@@ -19,7 +19,7 @@ export default function TrustBadges() {
   return (
     <div dir="rtl" className="py-14 px-4 bg-black">
       <p className="mb-22 text-center text-2xl font-semibold tracking-wide text-white">B2B MARKET LTD</p>
-      <div className="flex flex-col sm:flex-row justify-center text-center items-center gap-8 sm:gap-52">
+      <div className="grid grid-cols-1 justify-center items-center text-center gap-8 sm:grid-cols-3 sm:gap-6 lg:flex lg:flex-row lg:gap-52">
         {trustBadges.map((badge) => (
           <div key={badge.label} className="flex flex-col items-center gap-2">
             {badge.icon ? (
@@ -29,8 +29,8 @@ export default function TrustBadges() {
                 <ShieldCheckIcon />
               </span>
             )}
-            <span className="whitespace-nowrap text-lg sm:text-2xl font-semibold text-white">{badge.label}</span>
-            <span className="whitespace-nowrap text-base sm:text-xl font-light text-white">{badge.sub}</span>
+            <span className="whitespace-nowrap text-lg sm:text-2xl font-semibold text-white sm:whitespace-normal lg:whitespace-nowrap">{badge.label}</span>
+            <span className="whitespace-nowrap text-base sm:text-xl font-light text-white sm:whitespace-normal lg:whitespace-nowrap">{badge.sub}</span>
           </div>
         ))}
       </div>

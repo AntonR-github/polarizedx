@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "../context/CartContext";
 
-const FALLBACK_IMG = "/images/mock-product.png";
+const FALLBACK_IMG = "/images/mockproduct.jpg";
 const FREE_SHIPPING_THRESHOLD = 199;
 
 function TrashIcon() {

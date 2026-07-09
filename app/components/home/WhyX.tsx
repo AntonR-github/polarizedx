@@ -12,26 +12,26 @@ export default function WhyX() {
         {/* Left: text */}
         <div dir="rtl" className="px-8 py-12 text-center text-white sm:px-12 lg:w-1/2 lg:py-0 lg:pl-16 lg:pr-4">
           <div className="mx-auto max-w-md">
-            <h2 className="-mt-6 text-3xl font-regular lg:text-4xl">אז בנינו משהו שלא היה.</h2>
-            <div className="mt-6 text-2xl font-regular leading-relaxed text-white">
+            <h2 className="-mt-6 text-3xl font-regular sm:text-4xl">אז בנינו משהו שלא היה.</h2>
+            <div className="mt-6 text-xl font-regular leading-relaxed text-white sm:text-2xl">
               <p>משקפי פולורייד אמיתיים.</p>
               <p>בלי קיצורי דרך באיכות.</p>
               <p>בלי קישוטים מיותרים.</p>
               <p>בלי תירוצים על המחיר.</p>
             </div>
-            <p className="mt-8 text-3xl font-regular lg:text-4xl">6 דגמים. כל אחד עם <span className={inter.className}>X</span> שלו.</p>
-            <p className="mt-2 text-5xl font-semibold lg:text-6xl">זה ה-<span className={inter.className}>X</span>.</p>
+            <p className="mt-8 text-2xl font-regular sm:text-4xl">6 דגמים. כל אחד עם <span className={inter.className}>X</span> שלו.</p>
+            <p className="mt-2 text-6xl font-semibold">זה ה-<span className={inter.className}>X</span>.</p>
           </div>
         </div>
 
         {/* Right: sunglasses on stone */}
-        <div className="relative h-72 w-full lg:h-140 lg:w-1/2">
+        <div className="relative h-64 w-full overflow-hidden md:h-155 lg:h-[min(560px,38.89vw)] lg:w-1/2">
           <Image
             src="/images/hero/black_sunglasses.jpg"
             alt="POLARIZED-X sunglasses"
             fill
             quality={100}
-            className="object-cover object-center -translate-x-14 select-none pointer-events-none"
+            className="object-cover object-[center_20%] select-none pointer-events-none md:object-[center_10%] lg:object-contain lg:scale-90"
           />
         </div>
       </div>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useFavorites } from "../context/FavoritesContext";
+import { useCart } from "../context/CartContext";
 
 function HeartIcon({ filled = false, className = "" }: { filled?: boolean; className?: string }) {
   return (
@@ -23,6 +24,7 @@ function HeartIcon({ filled = false, className = "" }: { filled?: boolean; class
 
 export default function FavoritesPage() {
   const { favorites, toggle } = useFavorites();
+  const { addItem } = useCart();
   const hasFavorites = favorites.length > 0;
 
   return (
@@ -66,7 +68,7 @@ export default function FavoritesPage() {
                   </button>
                   <div className="relative h-40">
                     <Image
-                      src="/images/mock-product.png"
+                      src="/images/mockproduct.jpg"
                       alt={typeof p.name === "string" ? p.name : ""}
                       fill
                       className="object-contain p-2"
@@ -80,6 +82,12 @@ export default function FavoritesPage() {
                   )}
                   <button
                     type="button"
+                    onClick={() => addItem({
+                      id: p.id,
+                      name: typeof p.name === "string" ? p.name : p.id,
+                      price: typeof p.price === "number" ? p.price : 0,
+                      image: typeof p.thumbnail === "string" ? p.thumbnail : "/images/mockproduct.jpg",
+                    })}
                     className="mt-4 bg-black px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-800"
                   >
                     הוסף לסל

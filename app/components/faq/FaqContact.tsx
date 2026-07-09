@@ -25,14 +25,14 @@ export default function FaqContact() {
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
             href="https://wa.me/"
-            className="inline-flex items-center gap-2 bg-black px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-zinc-800"
+            className="inline-flex w-full items-center justify-center gap-2 bg-black px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-zinc-800 sm:w-auto"
           >
             <span>שוחח איתנו בוואטסאפ</span>
             <WhatsAppIcon />
           </a>
           <a
             href="tel:"
-            className="inline-flex items-center gap-2 border border-black px-6 py-3 text-base font-semibold text-black transition-colors hover:bg-black/5"
+            className="inline-flex w-full items-center justify-center gap-2 border border-black px-6 py-3 text-base font-semibold text-black transition-colors hover:bg-black/5 sm:w-auto"
           >
             <span>התקשר אלינו</span>
             <PhoneIcon />

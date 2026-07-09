@@ -15,28 +15,30 @@ export default function FeatureBar() {
     <div className="bg-white py-4">
       <div
         dir="ltr"
-        className="mx-auto grid w-full max-w-[1800px] grid-cols-2 divide-x divide-black px-6 lg:grid-cols-4"
+        className="relative mx-auto grid w-full max-w-[1800px] grid-cols-2 px-6 lg:grid-cols-4 lg:divide-x lg:divide-black"
       >
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-black lg:hidden" />
+        <div className="pointer-events-none absolute inset-x-6 top-1/2 h-px -translate-y-1/2 bg-black lg:hidden" />
         {features.map((f) => (
           <div
             key={f.en}
-            className="flex items-center justify-center gap-6 px-20 py-6"
+            className="grid grid-cols-[1fr_auto] items-center justify-center gap-2 px-2 py-6 sm:gap-3 sm:px-4 md:gap-6 md:px-20 lg:gap-[clamp(0.5rem,1.5vw,1.5rem)] lg:px-[clamp(1rem,3vw,5rem)]"
           >
             <div className="text-right">
-              <div className={`${montserrat.className} whitespace-nowrap font-semibold tracking-[0.15em] text-black text-2xl`}>{f.en}</div>
-              <div dir="rtl" className="whitespace-nowrap text-lg font-normal text-black">
+              <div className={`${montserrat.className} font-semibold tracking-widest text-black text-sm sm:text-lg sm:tracking-[0.15em] md:text-2xl lg:text-[clamp(1.1rem,1.6vw,1.5rem)]`}>{f.en}</div>
+              <div dir="rtl" className="text-xs font-normal text-black sm:text-sm md:text-lg lg:text-[clamp(0.75rem,1vw,1.125rem)]">
                 {f.he}
               </div>
             </div>
             {/* Icon placeholder — swap for the real icon when provided */}
-            <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-black/70">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/70 sm:h-14 sm:w-14 md:h-20 md:w-20 lg:h-[clamp(3.5rem,5vw,5rem)] lg:w-[clamp(3.5rem,5vw,5rem)]">
               {f.icon && (
                 <Image
                   src={f.icon}
                   alt=""
                   width={24}
                   height={24}
-                  className={`object-contain${f.icon.includes("wshield") ? " h-11 w-11 invert" : " h-9 w-9"}`}
+                  className={`object-contain${f.icon.includes("wshield") ? " h-8 w-8 sm:h-11 sm:w-11 invert" : " h-7 w-7 sm:h-9 sm:w-9"}`}
                 />
               )}
             </div>

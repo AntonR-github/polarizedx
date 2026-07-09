@@ -12,8 +12,21 @@ export default function ShopHero() {
       <div dir="ltr" className="grid grid-cols-1 lg:grid-cols-[78%_22%] items-stretch">
 
         {/* Left: text + product image on white */}
-        <div dir="rtl" className="relative flex min-h-[320px] items-center justify-end bg-white px-8 py-12 sm:px-12 lg:min-h-[380px] lg:px-16">
-          <div className="absolute inset-y-0 right-5 w-[62%] sm:w-[58%] lg:w-[52%]">
+        <div dir="rtl" className="relative flex flex-col items-center bg-white px-8 py-10 text-center sm:px-12 lg:flex-row lg:min-h-[380px] lg:items-center lg:justify-end lg:py-12 lg:text-right lg:px-16">
+          <div className="relative z-10 lg:max-w-[50%] lg:text-left lg:translate-x-[clamp(0px,4vw,4rem)]">
+            <h1 className={`${bebasNeue.className} mt-10 text-black leading-[0.95] tracking-tight text-7xl sm:text-8xl lg:text-[clamp(3rem,8vw,12.5rem)]`}>
+              POLARIZED-X
+            </h1>
+            <p className="text-xl font-regular text-black/80 lg:text-3xl">קלסיקה אמיתית שהולכת איתך.</p>
+            <Link
+              href="/shop"
+              className="mt-6 inline-flex items-center gap-4 self-center bg-black px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-zinc-800 lg:self-start"
+            >
+              <span>מה ה-X שלך</span>
+              <span aria-hidden>←</span>
+            </Link>
+          </div>
+          <div className="relative mt-6 h-56 w-full sm:h-72 lg:absolute lg:inset-y-0 lg:right-5 lg:mt-0 lg:h-auto lg:w-[52%]">
             <Image
               src="/images/shop/shophero.jpg"
               alt="POLARIZED-X sunglasses"
@@ -22,36 +35,23 @@ export default function ShopHero() {
               className="object-contain select-none pointer-events-none"
             />
           </div>
-          <div className="relative z-10 text-left lg:max-w-[50%] lg:translate-x-16">
-            <h1 className={`${bebasNeue.className} text-black leading-[0.95] tracking-tight text-7xl sm:text-8xl lg:text-[clamp(3rem,8vw,12.5rem)]`}>
-              POLARIZED-X
-            </h1>
-            <p className="text-2xl font-regular text-black/80 lg:text-3xl">קלסיקה אמיתית שהולכת איתך.</p>
-            <Link
-              href="/shop"
-              className="mt-6 inline-flex items-center gap-4 self-start bg-black px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-zinc-800"
-            >
-              <span>מה ה-X שלך</span>
-              <span aria-hidden>←</span>
-            </Link>
-          </div>
         </div>
 
         {/* Right: promo panel */}
         <div
           dir="rtl"
-          className="flex min-h-[220px] flex-col items-center justify-center gap-6 bg-black px-6 py-12 text-center text-white lg:min-h-full"
+          className="mx-4 my-6 flex flex-col items-center justify-center gap-1 rounded-2xl bg-black px-6 py-6 text-center text-white lg:mx-0 lg:my-0 lg:gap-6 lg:rounded-none lg:py-12 lg:min-h-full"
         >
-          <p className="text-5xl font-regular leading-tight lg:text-6xl">
+          <p className="text-3xl font-regular leading-tight lg:text-6xl">
             זוג שני
-            <br />
-            ב-100₪
+            <br className="hidden lg:block" />
+            {" "}ב-100₪
           </p>
           <div className={`${inter.className} flex flex-col items-center`}>
-            <p className="text-2xl">6 דגמים</p>
-            <p className="text-2xl">כל אחד עם ה-</p>
-            <p className="text-7xl font-regular leading-none lg:text-8xl mt-2">X</p>
-            <p className="text-2xl">שלו</p>
+            <p className="text-2xl lg:text-2xl">6 דגמים</p>
+            <p className="text-2xl lg:text-2xl">כל אחד עם ה-</p>
+            <p className="text-8xl font-regular leading-none lg:text-8xl mt-2">X</p>
+            <p className="text-2xl lg:text-2xl">שלו</p>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ export default function B2bRetail() {
       >
         {/* Left: polarized close-up + caption */}
         <div className="flex flex-col bg-black">
-          <div className="relative min-h-[400px] flex-1">
+          <div className="relative aspect-672/239 w-full lg:aspect-auto lg:min-h-100 lg:flex-1">
             <Image
               src="/images/hero/sunglasses-drive.jpg"
               alt="POLARIZED lenses"
@@ -19,14 +19,14 @@ export default function B2bRetail() {
               className="object-cover object-center select-none pointer-events-none"
             />
           </div>
-          <div className="bg-white px-6 py-6 text-center text-black">
-            <p className="text-4xl font-semibold"> .אמיתיים POLARIZED</p>
-            <p className="mt-1 text-4xl text-zinc-700">.הבדל שנראה. הבדל שמרגישים</p>
+          <div className="bg-black px-6 py-6 text-center text-white lg:bg-white lg:text-black">
+            <p className="text-2xl font-semibold sm:text-4xl"> .אמיתיים POLARIZED</p>
+            <p className="mt-1 text-2xl text-zinc-300 sm:text-4xl lg:text-zinc-700">.הבדל שנראה. הבדל שמרגישים</p>
           </div>
         </div>
 
         {/* Right: packaging image */}
-        <div className="relative min-h-[280px] bg-black lg:min-h-[420px]">
+        <div className="relative min-h-70 bg-black sm:min-h-100 lg:min-h-105">
           <Image
             src="/images/b2b/b2bpack.jpg"
             alt="POLARIZED-X packaging"

@@ -12,61 +12,79 @@ export default function B2bHero() {
       <div dir="ltr" className="grid grid-cols-1 lg:grid-cols-[76%_24%] items-stretch">
 
         {/* Left: background image + overlay content */}
-        <div className="relative min-h-160 lg:min-h-210">
+        <div className="relative order-2 w-full min-h-120 sm:min-h-0 sm:aspect-375/244 lg:order-1 lg:aspect-auto lg:min-h-180">
+          <Image
+            src="/images/mobile/mobilebghomepage.jpg"
+            alt=""
+            fill
+            priority
+            quality={100}
+            className="object-cover object-center select-none pointer-events-none sm:object-contain lg:hidden"
+          />
           <Image
             src="/images/b2b/b2bhero.jpg"
             alt=""
             fill
             priority
             quality={100}
-            className="object-cover object-[center_10%] select-none pointer-events-none"
+            className="hidden object-cover object-[center_10%] select-none pointer-events-none lg:block"
           />
-          <div className="absolute inset-0 flex flex-col justify-center translate-x-24 translate-y-32 px-8 sm:px-12 lg:px-16">
-            <p dir="rtl" className="text-left text-white/90 font-normal text-6xl sm:text-8xl">
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-end px-8 pb-0 text-center translate-y-6 sm:justify-center sm:px-12 sm:pb-0 sm:translate-y-0 lg:items-start lg:justify-center lg:px-16 lg:text-left lg:translate-x-24 lg:translate-y-32">
+            <p dir="rtl" className="text-white/90 font-normal text-5xl sm:text-6xl">
               לחנות שלך
             </p>
-            <h1 className={`${bebasNeue.className} text-white leading-[0.95] tracking-tight text-8xl sm:text-9xl lg:text-[clamp(3rem,8vw,12rem)]`}>
+            <h1 className={`${bebasNeue.className} text-white leading-[0.95] tracking-tight text-7xl sm:text-8xl lg:text-[clamp(8rem,8vw,12rem)]`}>
               POLARIZED-<span className={inter.className}>X</span>
             </h1>
-            <p dir="rtl" className="-mt-1 text-left text-white/90 font-normal text-xl sm:text-2xl lg:text-3xl">
+            <p dir="rtl" className="-mt-1 text-white/90 font-normal text-xl sm:text-2xl lg:text-3xl">
               קלסיקה אמיתית שהולכת איתך.
             </p>
-            <div dir="rtl" className="mt-8 flex flex-wrap items-center justify-end gap-4">
+            <div dir="rtl" className="mt-8 flex flex-col items-center gap-4 lg:flex-row lg:flex-wrap lg:items-center lg:justify-end">
               <Link
-                href="/b2b"
-                className="inline-flex items-center gap-4 self-start bg-black px-10 py-5 text-xl font-semibold text-white transition-colors hover:bg-zinc-800"
+                href="/contact"
+                className="order-1 inline-flex items-center gap-4 self-stretch justify-center bg-white px-10 py-3 text-xl font-semibold text-black transition-colors hover:bg-zinc-200 sm:py-4 lg:order-2 lg:self-start lg:justify-start lg:bg-black lg:py-5 lg:text-white lg:hover:bg-zinc-800"
               >
-                <span>כניסה לבעלי עסקים</span>
+                <span>דבר עם סוכן</span>
                 <span aria-hidden>←</span>
               </Link>
               <Link
-                href="/contact"
-                className="inline-flex items-center gap-4 self-start bg-black px-10 py-5 text-xl font-semibold text-white transition-colors hover:bg-zinc-800"
+                href="/b2b"
+                className="order-2 inline-flex items-center gap-4 self-stretch justify-center bg-white px-10 py-3 text-xl font-semibold text-black transition-colors hover:bg-zinc-200 sm:py-4 lg:order-1 lg:self-start lg:justify-start lg:bg-black lg:py-5 lg:text-white lg:hover:bg-zinc-800"
               >
-                <span>דבר עם סוכן</span>
+                <span>כניסה לבעלי עסקים</span>
                 <span aria-hidden>←</span>
               </Link>
             </div>
           </div>
         </div>
 
+        {/* Mobile/tablet only: sunglasses on stone, below the hero image */}
+        <div className="relative order-3 mx-auto min-h-48 w-4/5 bg-black sm:min-h-90 sm:w-full sm:mx-0 lg:hidden">
+          <Image
+            src="/images/about/aboutblackglasses.png"
+            alt="POLARIZED-X sunglasses"
+            fill
+            className="object-contain select-none pointer-events-none"
+          />
+        </div>
+
         {/* Right: retail pitch */}
         <div
           dir="rtl"
-          className="flex min-h-70 flex-col items-center justify-center gap-26 bg-black px-6 py-12 text-center text-white lg:min-h-145"
+          className="flex order-1 min-h-fit w-full flex-col items-center justify-center gap-8 bg-black px-0 py-8 text-center text-white lg:order-2 lg:min-h-145 lg:gap-26 lg:px-6 lg:py-12"
         >
-          <p className="text-4xl leading-relaxed">
+          <p className="mt-10 text-xl leading-relaxed sm:text-2xl lg:text-4xl">
             מותג אסתטי,
-            <br /> 
-            שקט, שייצב מדהים 
+            <br className="hidden lg:inline" />
+            שקט, שייצב מדהים
             <br />
             בעסק שלך.
-            <br />
+            <br className="hidden lg:inline" />
             ויעשה את העבודה במקומך.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 border border-white bg-white px-8 py-3 text-xl font-bold text-black transition-colors hover:bg-white/90"
+            className="hidden items-center gap-3 border border-white bg-white px-8 py-3 text-xl font-bold text-black transition-colors hover:bg-white/90 lg:inline-flex"
           >
             <span>צור קשר</span>
             <span aria-hidden>←</span>

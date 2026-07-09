@@ -7,12 +7,12 @@ export default function B2bStand() {
   return (
     <section className={`${inter.className} w-full bg-black`}>
       {/* dir=ltr locks text-left / stand-right to match design */}
-      <div dir="ltr" className="grid grid-cols-1 items-stretch lg:grid-cols-[60%_40%]">
+      <div dir="ltr" className="grid grid-cols-1 items-stretch lg:grid-cols-[1fr_1fr]">
 
         {/* Left: text */}
-        <div dir="rtl" className="flex flex-col justify-center bg-black px-8 py-12 text-right text-white sm:px-12 lg:pl-16 lg:pr-32">
+        <div dir="rtl" className="order-2 flex flex-col justify-center bg-black px-8 py-12 text-center text-white sm:px-12 lg:order-1 lg:pl-16 lg:pr-32 lg:text-right">
           <h2 className="text-4xl font-normal leading-tight lg:text-5xl">הסטנד עם ה-</h2>
-          <p className="mr-28 -mt-2 text-8xl leading-none lg:text-9xl">X</p>
+          <p className="-mt-2 text-8xl leading-none lg:mr-28 lg:text-9xl">X</p>
           <p className="mt-6 text-xl text-white lg:text-2xl">סטנד תצוגה ואחסנה באותו מקום.</p>
           <p className="mt-2 text-3xl font-semibold leading-snug text-white lg:text-4xl">
             נגיש, מזמין, וקומפקטי.
@@ -24,7 +24,7 @@ export default function B2bStand() {
         </div>
 
         {/* Right: stand on white */}
-        <div className="relative min-h-90 bg-white lg:min-h-140">
+        <div className="relative order-1 mx-auto min-h-96 w-full max-w-xs bg-white sm:max-w-sm sm:min-h-125 lg:order-2 lg:mx-0 lg:min-h-140 lg:max-w-none">
           <Image
             src="/images/hero/sunglasses-stand-fix.jpg"
             alt="POLARIZED-X display stand"

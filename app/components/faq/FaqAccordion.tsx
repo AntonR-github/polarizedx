@@ -42,12 +42,12 @@ export default function FaqAccordion() {
 
   return (
     <section className="w-full bg-black py-16">
-      <div dir="rtl" className="mx-auto max-w-4xl px-6 text-right text-white">
-        <h2 className="text-right text-5xl font-light">שאלות נפוצות</h2>
+      <div dir="rtl" className="mx-auto max-w-4xl px-6 text-center text-white lg:text-right">
+        <h2 className="text-center text-4xl font-light sm:text-5xl lg:text-right">שאלות נפוצות</h2>
 
         {categories.map((category) => (
           <div key={category.title} className="mt-15">
-            <h2 className="text-right text-3xl font-bold">{category.title}</h2>
+            <h2 className="text-center text-2xl font-bold sm:text-3xl lg:text-right">{category.title}</h2>
             <div className="mt-10 flex flex-col gap-3">
               {category.questions.map((item) => {
                 const key = `${category.title}-${item.q}`;
@@ -59,7 +59,7 @@ export default function FaqAccordion() {
                       onClick={() => setOpenKey(isOpen ? null : key)}
                       className="flex w-full items-center justify-between gap-4 px-5 py-4 text-right"
                     >
-                      <span>{item.q}</span>
+                      <span className="text-sm sm:text-base">{item.q}</span>
                       <span
                         aria-hidden
                         className={`shrink-0 text-xl transition-transform ${isOpen ? "rotate-45" : ""}`}

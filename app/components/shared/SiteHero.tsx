@@ -8,24 +8,91 @@ const inter = Inter({ subsets: ["latin"], weight: "700" });
 export default function SiteHero() {
   return (
     <section className="w-full bg-black">
-      {/* ── Split hero ── (dir=ltr locks image-left / panel-right to match design) */}
-      <div dir="ltr" className="grid grid-cols-1 lg:grid-cols-[73%_27%] items-stretch">
+      {/* ── Mobile stack ── (image+title → button → product photo → PUT AN X panel) */}
+      <div className="md:hidden">
+        <div className="mt-10 sm:mt-10 lg:mt-0 relative min-h-82 sm:min-h-82 lg:min-h-72">
+          <Image
+            src="/images/mobile/mobilebghomepage.jpg"
+            alt=""
+            fill
+            priority
+            quality={100}
+            className="object-cover object-[center_60%] select-none pointer-events-none"
+          />
+          <div dir="ltr" className="absolute inset-0 flex flex-col items-center justify-end px-6 pb-6 text-center">
+            <h1 className={`${bebasNeue.className} text-white leading-[0.95] tracking-tight text-7xl sm:text-8xl`}>
+              POLARIZED-<span className={inter.className}>X</span>
+            </h1>
+            <p dir="rtl" className="mt-1 text-center text-white/90 font-normal text-2xl">
+              קלסיקה אמיתית שהולכת איתך.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col bg-white">
+          <div className="flex justify-center px-6 pt-3 pb-0">
+            <Link
+              href="/shop"
+              dir="rtl"
+              className="inline-flex items-center gap-4 bg-black px-10 py-4 text-xl font-semibold text-white transition-colors hover:bg-white hover:text-black"
+            >
+              <span>מה ה-<span className={inter.className}>X</span> שלך</span>
+              <span aria-hidden>←</span>
+            </Link>
+          </div>
+
+          <div className="relative -mt-10 min-h-64">
+            <Image
+              src="/images/hero/hero-sunglasses-transparent.png"
+              alt="POLARIZED-X sunglasses"
+              fill
+              className="object-contain px-4 pb-4 pt-0"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center justify-center gap-1 bg-black px-6 pt-6 pb-10 text-center">
+          <Image
+            src="/images/hero/putx.png"
+            alt="PUT AN X ON IT"
+            width={260}
+            height={170}
+            className="h-56 w-auto object-contain"
+          />
+          <p dir="rtl" className="mt-2 text-lg leading-relaxed text-white/80">
+            כי &quot;בְּסְדֵר&quot; זה לא מספיק.
+            <br />
+            פולורייזד אמיתי. נגיש. כמו שצריך.
+          </p>
+        </div>
+      </div>
+
+      {/* ── Desktop split hero ── (dir=ltr locks image-left / panel-right to match design) */}
+      <div dir="ltr" className="hidden md:grid md:grid-cols-[73%_27%] items-stretch">
 
         {/* Left: background image + overlay content */}
-        <div className="relative min-h-[440px] lg:min-h-[580px]">
+        <div className="relative min-h-85 lg:min-h-115 xl:min-h-145">
+          <Image
+            src="/images/mobile/mobilebghomepage.jpg"
+            alt=""
+            fill
+            priority
+            quality={100}
+            className="object-cover object-[center_28%] select-none pointer-events-none lg:hidden"
+          />
           <Image
             src="/images/hero/heroimage.png"
             alt=""
             fill
             priority
             quality={100}
-            className="object-cover object-[center_10%] select-none pointer-events-none"
+            className="hidden object-cover object-[center_10%] select-none pointer-events-none lg:block"
           />
-          <div className="absolute inset-0 flex flex-col justify-center translate-x-6 translate-y-12 px-8 sm:px-12 lg:px-16">
-            <h1 className={`${bebasNeue.className} text-white leading-[0.95] tracking-tight text-8xl sm:text-9xl lg:text-[clamp(3rem,8vw,13.5rem)]`}>
+          <div className="absolute inset-0 flex flex-col justify-center translate-x-6 translate-y-12 px-8 lg:px-16">
+            <h1 className={`${bebasNeue.className} text-white leading-[0.95] tracking-tight text-[clamp(3rem,8vw,13.5rem)]`}>
               POLARIZED-<span className={inter.className}>X</span>
             </h1>
-            <p dir="rtl" className="-mt-1 text-left text-white/90 font-normal text-3xl sm:text-2xl lg:text-4xl">
+            <p dir="rtl" className="-mt-1 text-left text-white/90 font-normal text-4xl">
               קלסיקה אמיתית שהולכת איתך.
             </p>
             <Link
@@ -48,21 +115,21 @@ export default function SiteHero() {
               alt="PUT AN X ON IT"
               width={260}
               height={170}
-              className="h-56 w-auto object-contain lg:h-72 mt-3"
+              className="h-32 w-auto object-contain lg:h-44 xl:h-72 mt-1 lg:mt-3"
             />
-            <p dir="rtl" className="-mt-2 mb-6 text-xl leading-relaxed text-white/80">
+            <p dir="rtl" className="-mt-2 mb-3 lg:mb-6 text-lg lg:text-xl leading-relaxed text-white/80">
               כי &quot;בְּסְדֵר&quot; זה לא מספיק.
               <br />
               פולורייזד אמיתי. נגיש. כמו שצריך.
             </p>
           </div>
           {/* Bottom: sunglasses product on white */}
-          <div className="relative flex-4 min-h-72 border-b-3 border-black bg-white">
+          <div className="relative flex-4 min-h-48 lg:min-h-64 xl:min-h-84 border-b-3 border-black bg-white">
             <Image
-              src="/images/hero/hero-sunglasses.jpg"
+              src="/images/hero/hero-sunglasses-transparent.png"
               alt="POLARIZED-X sunglasses"
               fill
-              className="object-contain p-1"
+              className="object-contain p-1 lg:scale-110"
             />
           </div>
         </div>

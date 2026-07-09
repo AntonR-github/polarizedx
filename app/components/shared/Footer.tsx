@@ -95,38 +95,38 @@ function LinkColumn({ title, links }: { title: string; links: { label: string; h
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="site-container px-6 py-10 lg:px-12">
+      <div className="site-container flex flex-col px-6 py-10 lg:px-12">
 
         {/* Brand row */}
-        <div className="flex items-center gap-6 pb-8">
+        <div className="order-3 flex flex-col items-center gap-2 pb-8 text-center md:order-1 md:flex-row md:gap-6 md:text-right">
           <span className="text-2xl font-bold tracking-wide">POLARIZED-X</span>
           <span className="text-sm text-zinc-400">קלסיקה אמיתית שהולכת איתך.</span>
         </div>
 
-        <div className="border-t border-white/10" />
+        <div className="order-4 border-t border-white/10 md:order-2" />
 
         {/* Columns */}
-        <div className="grid grid-cols-2 gap-10 py-10 md:grid-cols-4">
+        <div className="order-1 grid grid-cols-1 gap-10 py-10 md:order-3 md:grid-cols-4">
           <LinkColumn title="הקולקציה" links={collection} />
           <LinkColumn title="המותג" links={brand} />
           <LinkColumn title="שירות" links={service} />
 
           {/* Newsletter */}
-          <div className="col-span-2 text-center md:col-span-1">
+          <div className="text-center">
             <p className="text-sm leading-relaxed text-zinc-300">
               הישאר מעודכן קולקציה חדשה כל שנה.
               <br />
               תהיה הראשון לדעת.
             </p>
-            <div className="mx-auto mt-4 flex max-w-xs items-stretch overflow-hidden rounded-md border border-white/20">
+            <div className="mx-auto mt-4 flex max-w-xs flex-col gap-3">
               <input
                 type="email"
                 placeholder="כתובת אימייל"
-                className="min-w-0 flex-1 bg-transparent px-4 py-2.5 text-sm text-white outline-none placeholder:text-zinc-500"
+                className="w-full rounded-md border border-white/20 bg-transparent px-4 py-2.5 text-sm text-white outline-none placeholder:text-zinc-500"
               />
               <button
                 type="button"
-                className="shrink-0 border-r border-white/20 px-4 text-sm font-medium text-white transition-colors hover:bg-white/10"
+                className="w-full rounded-md bg-white px-4 py-2.5 text-sm font-medium text-black transition-colors hover:bg-white/90"
               >
                 הרשמה
               </button>
@@ -134,10 +134,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10" />
+        <div className="order-2 border-t border-white/10 md:order-4" />
 
         {/* Trust badges */}
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 py-6 text-sm text-zinc-200">
+        <div className="order-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 py-6 text-sm text-zinc-200">
           {badges.map((b, i) => (
             <div key={b} className="flex items-center gap-4">
               {i > 0 && <span className="h-4 w-px bg-white/15" />}
@@ -149,19 +149,19 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-white/10" />
+        <div className="order-6 border-t border-white/10" />
 
         {/* Bottom bar */}
-        <div className="flex flex-col gap-5 pt-6 text-xs text-zinc-400 md:flex-row md:items-center md:justify-between">
+        <div className="order-7 flex flex-col gap-5 pt-6 text-xs text-zinc-400 md:flex-row md:items-center md:justify-between">
           {/* Company info (right in RTL) */}
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 md:justify-start">
+          <div className="order-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 md:order-0 md:justify-start">
             <span>© 2026 POLARIZED-X</span>
             <span>B2B MARKT LTD יבואנית בלעדית</span>
              <span>המרכבה 25, חולון</span>
           </div>
 
           {/* Socials (left in RTL) */}
-          <div className="flex items-center justify-center gap-4 md:justify-end">
+          <div className="order-1 flex items-center justify-center gap-4 md:order-0 md:justify-end">
             {socials.map((s) => (
               <a key={s.label} href={s.href} aria-label={s.label} className="text-zinc-400 transition-colors hover:text-white">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">

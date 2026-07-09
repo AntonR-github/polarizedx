@@ -17,18 +17,18 @@ export default function ShopTrustBar() {
       >
         {badges.map((b) => (
           <div key={b.label} className="flex flex-col items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center">
+            <div className="flex h-18 w-18 items-center justify-center lg:h-12 lg:w-12">
               {b.icon && (
                 <Image
                   src={b.icon}
                   alt=""
                   width={24}
                   height={24}
-                  className={`h-6 w-6 object-contain${b.icon.includes("wshield") ? " invert" : ""}`}
+                  className={`h-10 w-10 object-contain lg:h-16 lg-w-16 sm:h-11 sm:w-11${b.icon.includes("wshield") ? " invert" : ""}`}
                 />
               )}
             </div>
-            <p className="text-sm font-medium text-zinc-700">{b.label}</p>
+            <p className="text-sm font-medium text-zinc-700 lg:text-lg">{b.label}</p>
           </div>
         ))}
       </div>

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html, body {
+  overflow-x: hidden;
+}
+
 /* ── Almoni DL AAA ── */
 @font-face {
   font-family: "Almoni";
