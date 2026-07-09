@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getProducts, SHIPPING_FEE, FREE_SHIPPING_THRESHOLD } from "../../../lib/products";
 
 export interface CartItem {
   id: string;
@@ -9,9 +10,6 @@ export interface CartItem {
 }
 
 export interface HypCheckoutBody {
-  amount: number;
-  shipping?: number;
-  discount?: number;
   coupon?: string;
   customer?: {
     firstName: string;
@@ -42,16 +40,50 @@ export async function POST(req: NextRequest) {
   }
 
   const body: HypCheckoutBody = await req.json();
-  const { amount, shipping = 0, discount = 0, coupon, customer, items } = body;
+  const { coupon, customer, items } = body;
 
-  // NOTE: `amount` is still client-supplied here — this is a known gap, not a resolved one.
-  // Once real product data exists (via the CRM), this must recompute the authoritative total
-  // server-side from item ids/qty + a server-validated coupon, rather than trusting the client.
-  if (typeof amount !== "number" || !Number.isFinite(amount) || amount <= 0) {
-    return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
+  if (!items?.length) {
+    return NextResponse.json({ error: "Cart is empty" }, { status: 400 });
   }
-  if (typeof shipping !== "number" || typeof discount !== "number") {
-    return NextResponse.json({ error: "Invalid order totals" }, { status: 400 });
+
+  const products = await getProducts();
+  let itemsTotal = 0;
+  for (const item of items) {
+    const product = products.find((p) => p.id === item.id || p.variantId === item.id);
+    if (!product) {
+      return NextResponse.json({ error: `Unknown product: ${item.id}` }, { status: 400 });
+    }
+    itemsTotal += product.price * item.qty;
+  }
+
+  let discount = 0;
+  if (coupon) {
+    try {
+      const couponRes = await fetch(
+        `${process.env.CRM_URL}/api/${process.env.CRM_SITE_SLUG}/validate-coupon`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code: coupon }),
+        }
+      );
+      if (couponRes.ok) {
+        const couponData = await couponRes.json();
+        discount =
+          couponData.type === "PERCENT"
+            ? Math.round(((itemsTotal * couponData.value) / 100) * 100) / 100
+            : Math.min(couponData.value, itemsTotal);
+      }
+    } catch {
+      // Coupon service unreachable — proceed without a discount rather than block checkout.
+    }
+  }
+
+  const shipping = itemsTotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
+  const amount = Math.max(0, itemsTotal - discount) + shipping;
+
+  if (amount <= 0) {
+    return NextResponse.json({ error: "Invalid order total" }, { status: 400 });
   }
 
   // Generated server-side — never trust a client-supplied order id.
