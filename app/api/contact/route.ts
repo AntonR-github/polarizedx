@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
   try {
     await transporter.sendMail({
       from: `"POLARIZED-X Website" <noreply@polarizedx.co.il>`,
-      to: "realleafherbs@gmail.com",
+      to: process.env.SMTP_USER!,
       replyTo: email,
       subject: `פנייה חדשה מהאתר – ${name}`,
       text: `שם: ${name}\nטלפון: ${phone}\nאימייל: ${email}\nהודעה: ${message}`,
