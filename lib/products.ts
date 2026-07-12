@@ -1,6 +1,33 @@
-import { products as fallbackProducts, type StoreProduct } from "./products-data";
-
-export type { StoreProduct };
+export interface StoreProduct {
+  id: string;
+  handle: string;
+  name: string;
+  badge?: string;
+  color?: string;
+  material?: string;
+  price: number;
+  variantId: string;
+  thumbnail?: string | null;
+  images?: string[];
+  description?: string;
+  features?: string[];
+  cardFeatures?: string[];
+  variants: { id: string; title?: string; price?: number }[];
+  options?: { id: string; title: string; value?: string }[];
+  metaTitle?: string | null;
+  metaDescription?: string | null;
+  ogImage?: string | null;
+  videoUrl?: string | null;
+  soldCount?: string | null;
+  rating?: number | null;
+  reviewCount?: number | null;
+  specsRaw?: string | null;
+  inTheBox?: string | null;
+  usageInstructions?: string | null;
+  warrantyInfo?: string | null;
+  faqRaw?: string | null;
+  relatedProductIds?: string[];
+}
 
 export const SHIPPING_FEE = 29;
 export const FREE_SHIPPING_THRESHOLD = 199;
@@ -69,13 +96,13 @@ export async function getProducts(): Promise<StoreProduct[]> {
       `${process.env.CRM_URL}/api/${process.env.CRM_SITE_SLUG}/products`,
       { next: { revalidate: 60 }, signal: AbortSignal.timeout(10000) }
     );
-    if (!res.ok) return fallbackProducts;
+    if (!res.ok) return [];
 
     const data = await res.json();
-    if (!Array.isArray(data) || data.length === 0) return fallbackProducts;
+    if (!Array.isArray(data)) return [];
 
     return data.map(toStoreProduct);
   } catch {
-    return fallbackProducts;
+    return [];
   }
 }

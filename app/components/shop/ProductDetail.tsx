@@ -5,7 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import type { Product } from "../../../lib/products-data";
+import type { StoreProduct as Product } from "../../../lib/products";
 import { useCart } from "../../context/CartContext";
 import { useFavorites } from "../../context/FavoritesContext";
 import ProductSecondPair from "./ProductSecondPair";

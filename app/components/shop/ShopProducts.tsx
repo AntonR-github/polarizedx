@@ -5,17 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "../../context/CartContext";
 import type { StoreProduct } from "../../../lib/products";
-import { products as mockProducts } from "../../../lib/products-data";
 
 const PAGE_SIZE = 12;
 const FALLBACK_IMG = "/images/mockproduct.jpg";
-const MOCK_HANDLES = new Set(mockProducts.map((p) => p.handle));
 
 function getProductHref(p: StoreProduct): string {
-  const handle = p.handle || p.id;
-  if (MOCK_HANDLES.has(handle)) return `/shop/${handle}`;
-  const fallback = mockProducts[Math.floor(Math.random() * mockProducts.length)];
-  return `/shop/${fallback.handle}`;
+  return `/shop/${p.handle || p.id}`;
 }
 
 function ProductCard({ p }: { p: StoreProduct }) {
