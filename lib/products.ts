@@ -67,7 +67,7 @@ export async function getProducts(): Promise<StoreProduct[]> {
   try {
     const res = await fetch(
       `${process.env.CRM_URL}/api/${process.env.CRM_SITE_SLUG}/products`,
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 60 }, signal: AbortSignal.timeout(10000) }
     );
     if (!res.ok) return fallbackProducts;
 

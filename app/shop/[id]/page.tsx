@@ -7,7 +7,7 @@ async function getReviews(productId: string): Promise<Review[]> {
   try {
     const res = await fetch(
       `${process.env.CRM_URL}/api/${process.env.CRM_SITE_SLUG}/reviews?productId=${productId}`,
-      { next: { revalidate: 30 } }
+      { next: { revalidate: 30 }, signal: AbortSignal.timeout(10000) }
     );
     if (!res.ok) return [];
     return await res.json();
