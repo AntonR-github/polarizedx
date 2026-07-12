@@ -41,7 +41,7 @@ export default function ShopRetail() {
             href="/contact"
             className="mb-15 inline-flex items-center gap-3 self-center rounded-md border border-white bg-white px-6 py-2.5 text-lg font-semibold text-black transition-colors hover:bg-white/90 lg:self-start"
           >
-            <span>קמעונים - בוא נדבר</span>
+            <span>בעל עסק - בוא נדבר</span>
             <span aria-hidden>←</span>
           </Link>
         </div>
