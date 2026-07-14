@@ -16,23 +16,46 @@ function getProductHref(p: StoreProduct): string {
 function ProductCard({ p }: { p: StoreProduct }) {
   const { addItem } = useCart();
   const image = p.thumbnail ?? p.images?.[0] ?? FALLBACK_IMG;
+  const rating = p.rating ?? 0;
+  const reviewCount = p.reviewCount ?? 0;
   return (
-    <div className="flex w-full flex-col rounded-md border border-zinc-200 bg-white p-4 text-center">
+    <div className="group flex w-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-shadow hover:shadow-md">
       <Link href={getProductHref(p)} className="flex flex-col">
-        <div className="relative h-40">
-          <Image src={image} alt={p.name} fill className="object-contain p-2" />
+        <div className="relative flex items-center justify-center bg-white" style={{ aspectRatio: "4/3" }}>
+          <Image
+            src={image}
+            alt={p.name}
+            fill
+            className="object-contain p-6 transition-transform duration-300 group-hover:scale-105"
+          />
         </div>
-        <p className="mt-2 text-2xl font-bold text-black">{p.name}</p>
-        {p.color && <p className="mt-2 text-base text-black">{p.color}</p>}
-        <p className="mt-2 text-2xl font-bold text-black">{p.price} ₪</p>
+        <div dir="rtl" className="flex flex-col gap-2 px-4 pt-3 text-right">
+          <p className="min-h-[3.1rem] line-clamp-2 text-center text-xl font-normal leading-snug text-black">{p.name}</p>
+          <div className="flex items-center justify-center gap-1.5">
+            <div className="flex gap-0.5">
+              {Array.from({ length: 5 }).map((_, n) => (
+                <svg key={n} xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                  fill={rating > 0 && n < Math.round(rating) ? "#f59e0b" : "#e5e7eb"}
+                  stroke={rating > 0 && n < Math.round(rating) ? "#f59e0b" : "#e5e7eb"} strokeWidth="0.5">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              ))}
+            </div>
+            {reviewCount > 0 && <span className="text-xs text-zinc-400">({reviewCount})</span>}
+          </div>
+          {p.color && <p className="text-sm text-zinc-500">צבע: {p.color}</p>}
+          <p className="text-2xl font-semibold text-black">{p.price} ₪</p>
+        </div>
       </Link>
-      <button
-        type="button"
-        onClick={() => addItem({ id: p.id, name: p.name, price: p.price, image })}
-        className="mt-4 rounded-md bg-black px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-800"
-      >
-        הוסף לסל
-      </button>
+      <div className="px-4 pb-4 pt-3">
+        <button
+          type="button"
+          onClick={() => addItem({ id: p.id, name: p.name, price: p.price, image })}
+          className="w-full rounded-xl bg-black px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-800"
+        >
+          הוסף לסל
+        </button>
+      </div>
     </div>
   );
 }
