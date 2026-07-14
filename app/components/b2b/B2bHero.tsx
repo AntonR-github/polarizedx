@@ -70,7 +70,7 @@ export default function B2bHero() {
             alt=""
             width={98}
             height={202}
-            className="mt-5 h-58! scale-160 w-auto sm:h-64 lg:h-96!"
+            className="mt-5 h-72! scale-160 w-auto sm:h-64 lg:h-96!"
           />
         </div>
       </div>

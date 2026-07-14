@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import type { StoreProduct } from "../../../lib/products";
 
 const FALLBACK_IMG = "/images/mockproduct.jpg";
@@ -54,16 +56,49 @@ function TextCta({ className = "", center = false }: { className?: string; cente
 }
 
 export default function FeaturedProducts({ products }: { products: StoreProduct[] }) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ direction: "rtl", align: "start" });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const onSelect = useCallback((api: NonNullable<typeof emblaApi>) => {
+    setSelectedIndex(api.selectedScrollSnap());
+  }, []);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    setScrollSnaps(emblaApi.scrollSnapList());
+    onSelect(emblaApi);
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+  }, [emblaApi, onSelect]);
+
   return (
     <section className="w-full pt-5 pb-5 bg-[#DBDBDB]">
-      {/* ── Mobile + tablet: text/CTA above stacked column ── */}
+      {/* ── Mobile + tablet: text/CTA above slider ── */}
       <div className="lg:hidden px-6 py-10">
         <TextCta className="mb-8" center />
-        <div dir="rtl" className="flex flex-col gap-4">
-          {products.map((p) => (
-            <ProductCard key={p.id} p={p} />
-          ))}
+        <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
+          <div dir="rtl" className="flex -ms-4">
+            {products.map((p) => (
+              <div key={p.id} className="min-w-0 shrink-0 grow-0 basis-[70%] ps-4 sm:basis-[45%]">
+                <ProductCard p={p} />
+              </div>
+            ))}
+          </div>
         </div>
+        {scrollSnaps.length > 1 && (
+          <div className="mt-6 flex justify-center gap-2">
+            {scrollSnaps.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`עבור למוצר ${i + 1}`}
+                onClick={() => emblaApi?.scrollTo(i)}
+                className={`h-2 rounded-full transition-all ${i === selectedIndex ? "w-6 bg-black" : "w-2 bg-black/25"}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* ── Desktop: grid ── */}

@@ -20,7 +20,7 @@ export default function RetailPitch() {
               alt="POLARIZED lenses"
               fill
               quality={100}
-              className="object-cover object-center select-none pointer-events-none"
+              className="object-contain object-center select-none pointer-events-none"
             />
           </div>
         </div>
@@ -40,10 +40,10 @@ export default function RetailPitch() {
           className="order-1 flex flex-col items-center justify-center bg-black px-8 py-10 text-center text-white sm:px-12 lg:order-0"
         >
           <div className="self-center max-w-lg text-center lg:mr-[min(4rem,4.44vw)] lg:self-start lg:text-right">
-            <h2 className="text-center text-4xl font-regular sm:text-5xl lg:text-right lg:text-4xl">ניתן להשיג </h2>
-            <h2 className="mb-10 text-center text-4xl font-regular sm:text-5xl lg:text-right lg:text-4xl">בחנויות נבחרות</h2>
-            <p className="mb-10 leading-snug text-3xl text-white">
-              דאגנו שתוכלו להנות מהם בצורה זמינה
+            <h2 className="whitespace-nowrap text-center text-4xl font-regular sm:text-5xl lg:text-right lg:text-4xl">ניתן להשיג בחנויות נבחרות </h2>
+            <h3 className="mb-10 whitespace-nowrap text-center text-xl font-regular sm:text-2xl lg:text-right lg:text-xl">זמינים עכשיו במגוון נקודות מכירה ברחבי הארץ</h3>
+            <p className="mb-10 whitespace-nowrap leading-snug text-xl sm:text-2xl lg:text-xl text-white">
+              צרו קשר לבירור על נק׳ קרובה אליכם
             </p>
             <Link
               href="/contact"

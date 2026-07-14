@@ -23,7 +23,7 @@ export default function SiteHero() {
               POLARIZED-<img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
             </h1>
             <p dir="rtl" className="mt-1 text-center text-white/90 font-normal text-2xl">
-              קלסיקה אמיתית שהולכת איתך.
+                 משקפי שמש שהולכים איתך.
             </p>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function SiteHero() {
             className="object-cover object-[center_28%] select-none pointer-events-none lg:hidden"
           />
           <Image
-            src="/images/hero/heroimage.png"
+            src="/images/hero/heroimage.jpg"
             alt=""
             fill
             priority
