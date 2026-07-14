@@ -23,20 +23,20 @@ export default function FeatureBar() {
             className="grid grid-cols-[1fr_auto] items-center justify-center gap-2 px-2 py-6 sm:gap-3 sm:px-4 md:gap-6 md:px-20 lg:gap-[clamp(0.5rem,1.5vw,1.5rem)] lg:px-[clamp(1rem,3vw,5rem)]"
           >
             <div className="text-right">
-              <div className={`${montserrat.className} font-semibold tracking-widest text-black text-sm sm:text-lg sm:tracking-[0.15em] md:text-2xl lg:text-[clamp(1.1rem,1.6vw,1.5rem)]`}>{f.en}</div>
-              <div dir="rtl" className="text-xs font-normal text-black sm:text-sm md:text-lg lg:text-[clamp(0.75rem,1vw,1.125rem)]">
+              <div className={`${montserrat.className} featurebar-title whitespace-nowrap font-semibold tracking-widest text-black text-sm sm:text-lg sm:tracking-[0.15em] md:text-2xl`}>{f.en}</div>
+              <div dir="rtl" className="featurebar-subtitle whitespace-nowrap text-xs font-normal text-black sm:text-sm md:text-lg">
                 {f.he}
               </div>
             </div>
             {/* Icon placeholder — swap for the real icon when provided */}
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/70 sm:h-14 sm:w-14 md:h-20 md:w-20 lg:h-[clamp(3.5rem,5vw,5rem)] lg:w-[clamp(3.5rem,5vw,5rem)]">
+            <div className="featurebar-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/70 sm:h-14 sm:w-14 md:h-20 md:w-20">
               {f.icon && (
                 <Image
                   src={f.icon}
                   alt=""
                   width={24}
                   height={24}
-                  className={`object-contain${f.icon.includes("wshield") ? " h-8 w-8 sm:h-11 sm:w-11 invert" : " h-7 w-7 sm:h-9 sm:w-9"}`}
+                  className={`featurebar-icon-img object-contain${f.icon.includes("wshield") ? " is-wshield h-8 w-8 sm:h-11 sm:w-11 invert" : " h-7 w-7 sm:h-9 sm:w-9"}`}
                 />
               )}
             </div>

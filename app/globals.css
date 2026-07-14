@@ -41,6 +41,51 @@ html, body {
   }
 }
 
+/* FeatureBar icons + text: between the lg breakpoint (900px) and 1250px, the
+   4-item row is too narrow for full-size icons and text without crowding the
+   divider lines, so both shrink further in that band. From 1250px there's
+   enough room and they return to normal size. */
+@media (min-width: 900px) and (max-width: 1249.98px) {
+  .featurebar-icon {
+    width: clamp(2rem, 3.5vw, 2.75rem);
+    height: clamp(2rem, 3.5vw, 2.75rem);
+  }
+  .featurebar-icon-img {
+    width: clamp(0.9rem, 1.6vw, 1.4rem);
+    height: clamp(0.9rem, 1.6vw, 1.4rem);
+  }
+  .featurebar-icon-img.is-wshield {
+    width: clamp(1rem, 1.8vw, 1.6rem);
+    height: clamp(1rem, 1.8vw, 1.6rem);
+  }
+  .featurebar-title {
+    font-size: clamp(0.7rem, 1.2vw, 1.05rem);
+  }
+  .featurebar-subtitle {
+    font-size: clamp(0.55rem, 0.85vw, 0.85rem);
+  }
+}
+@media (min-width: 1250px) {
+  .featurebar-icon {
+    width: clamp(3.5rem, 5vw, 5rem);
+    height: clamp(3.5rem, 5vw, 5rem);
+  }
+  .featurebar-icon-img {
+    width: clamp(1.75rem, 2.2vw, 2.25rem);
+    height: clamp(1.75rem, 2.2vw, 2.25rem);
+  }
+  .featurebar-icon-img.is-wshield {
+    width: clamp(2rem, 2.5vw, 2.75rem);
+    height: clamp(2rem, 2.5vw, 2.75rem);
+  }
+  .featurebar-title {
+    font-size: clamp(0.85rem, 1.6vw, 1.5rem);
+  }
+  .featurebar-subtitle {
+    font-size: clamp(0.65rem, 1vw, 1.125rem);
+  }
+}
+
 /* ShopHero text-block offset: the full clamp(0px,14vw,18rem) shift only
    looks right at 1720px+; below that (but still desktop, 900-1719px) it
    needs to be smaller so the text doesn't push too far toward the image. */
