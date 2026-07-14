@@ -51,13 +51,14 @@ export default function SiteHeroSP() {
         </div>
 
         <div className="flex flex-col items-center justify-center gap-1 bg-black px-6 pt-6 pb-10 text-center">
-          <Image
-            src="/images/hero/putx.png"
-            alt="PUT AN X ON IT"
-            width={260}
-            height={170}
-            className="h-56 w-auto object-contain"
-          />
+          <div className="relative h-64 w-full">
+            <Image
+              src="/images/hero/puxonit-v4.png"
+              alt="PUT AN X ON IT"
+              fill
+              className="object-contain"
+            />
+          </div>
           <p dir="rtl" className="mt-2 text-lg leading-relaxed text-white/80">
             פולורייזד אמיתי. נגיש. כמו שצריך.
           </p>
@@ -65,7 +66,7 @@ export default function SiteHeroSP() {
       </div>
 
       {/* ── Desktop split hero ── (dir=ltr locks image-left / panel-right to match design) */}
-      <div dir="ltr" className="mt-30 hidden md:grid md:grid-cols-[73%_27%] items-stretch">
+      <div dir="ltr" className="mt-24 hidden md:grid md:grid-cols-[78%_22%] items-stretch">
 
         {/* Left: background image + overlay content */}
         <div className="relative min-h-85 lg:min-h-115 xl:min-h-145">
@@ -106,16 +107,17 @@ export default function SiteHeroSP() {
         <div className="flex flex-col bg-black">
           {/* Top: PUT AN X ON IT + tagline */}
           <div className="flex flex-[3] flex-col items-center justify-center px-2 py-2 text-center">
-            <Image
-              src="/images/hero/putx.png"
-              alt="PUT AN X ON IT"
-              width={260}
-              height={170}
-              className="h-32 w-auto object-contain lg:h-44 xl:h-72 mt-1 lg:mt-3"
-            />
-            <p dir="rtl" className="-mt-2 mb-3 lg:mb-6 text-lg lg:text-xl leading-relaxed text-white/80">
+            <div className="relative min-h-40 w-full flex-1 lg:min-h-56 xl:min-h-72">
+              <Image
+                src="/images/hero/puxonit-v4.png"
+                alt="PUT AN X ON IT"
+                fill
+                className="scale-200 object-contain"
+              />
+            </div>
+            {/* <p dir="rtl" className="-mt-2 mb-3 lg:mb-6 text-lg lg:text-xl leading-relaxed text-white/80">
               פולורייזד אמיתי. נגיש. כמו שצריך.
-            </p>
+            </p> */}
           </div>
           {/* Bottom: sunglasses product on white */}
           <div className="relative flex-4 min-h-48 lg:min-h-64 xl:min-h-84 bg-white">
@@ -123,7 +125,7 @@ export default function SiteHeroSP() {
               src="/images/hero/hero-sunglasses-transparent.png"
               alt="POLARIZED-X sunglasses"
               fill
-              className="object-contain p-1 lg:scale-110 select-none pointer-events-none mask-[linear-gradient(to_bottom,black_92%,transparent_100%)]"
+              className="object-contain p-1 select-none pointer-events-none mask-[linear-gradient(to_bottom,black_92%,transparent_100%)]"
             />
           </div>
         </div>

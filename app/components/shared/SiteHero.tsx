@@ -41,19 +41,18 @@ export default function SiteHero() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-1 bg-black px-6 pt-6 pb-10 text-center">
+        <div className="relative h-80 w-full bg-black px-6 pt-6 pb-10">
           <Image
-            src="/images/hero/puxonit.png"
+            src="/images/hero/puxonit-v4.png"
             alt="PUT AN X ON IT"
-            width={260}
-            height={170}
-            className="h-56 w-auto object-contain"
+            fill
+            className="object-contain"
           />
         </div>
       </div>
 
       {/* ── Desktop split hero ── (dir=ltr locks image-left / panel-right to match design) */}
-      <div dir="ltr" className="mt-30 hidden md:grid md:grid-cols-[75%_25%] items-stretch">
+      <div dir="ltr" className="mt-24 hidden md:grid md:grid-cols-[80%_20%] items-stretch">
 
         {/* Left: background image + overlay content */}
         <div className="relative min-h-100 lg:min-h-130 xl:min-h-160">
@@ -93,13 +92,12 @@ export default function SiteHero() {
         {/* Right: black panel split top/bottom */}
         <div className="flex flex-col bg-black">
           {/* PUT AN X ON IT + tagline */}
-          <div className="flex flex-1 flex-col items-center justify-center px-2 py-2 text-center">
+          <div className="relative flex-1 px-2 py-6">
             <Image
-              src="/images/hero/puxonit.png"
+              src="/images/hero/puxonit-v4.png"
               alt="PUT AN X ON IT"
-              width={260}
-              height={170}
-              className="h-32 w-auto object-contain lg:h-44 xl:h-72 mt-1 lg:mt-3"
+              fill
+              className="object-contain"
             />
           </div>
         </div>
