@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Bebas_Neue, Inter } from "next/font/google";
+import { Bebas_Neue } from "next/font/google";
 
 const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: "400" });
-const inter = Inter({ subsets: ["latin"], weight: "700" });
 
 export default function B2bHero() {
   return (
@@ -34,7 +33,7 @@ export default function B2bHero() {
               לחנות שלך
             </p>
             <h1 className={`${bebasNeue.className} text-white leading-[0.95] tracking-tight text-7xl sm:text-9xl lg:text-[clamp(9rem,9vw,13rem)]!`}>
-              POLARIZED-<span className={inter.className}>X</span>
+              POLARIZED-<img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
             </h1>
             <p dir="rtl" className="-mt-1 text-white/90 font-normal text-2xl sm:text-4xl lg:text-5xl">
               קלסיקה אמיתית שהולכת איתך.
@@ -67,11 +66,11 @@ export default function B2bHero() {
           className="flex order-1 min-h-fit w-full flex-col items-center justify-center gap-8 bg-black px-0 py-8 text-center text-white lg:order-2 lg:min-h-80! lg:gap-26 lg:px-6 lg:py-12"
         >
           <Image
-            src="/images/hero/putx.png"
+            src="/images/hero/puxonit-v4.png"
             alt=""
             width={98}
             height={202}
-            className="mt-5 h-58! w-auto sm:h-64 lg:h-96!"
+            className="mt-5 h-58! scale-160 w-auto sm:h-64 lg:h-96!"
           />
         </div>
       </div>

@@ -144,7 +144,7 @@ export default function Footer() {
 
         {/* Brand row */}
         <div className="order-3 flex flex-col items-center gap-2 pb-8 text-center md:order-1 md:flex-row md:gap-6 md:text-right">
-          <span className="text-2xl font-bold tracking-wide">POLARIZED-X</span>
+          <Image src="/logo/logo2w.png" alt="POLARIZED-X" width={160} height={46} className="h-3 w-auto" />
           <span className="text-sm text-zinc-400">קלסיקה אמיתית שהולכת איתך.</span>
         </div>
 

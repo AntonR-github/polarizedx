@@ -45,7 +45,7 @@ export default function SecondPair() {
         {/* Right: packaging on white */}
         <div dir="rtl" className="order-1 flex flex-col bg-white px-8 py-6 sm:px-12 lg:order-2">
           <h2 className="text-right text-3xl font-bold text-black lg:text-5xl">
-            אריזה שלא תרצה לזרוק.
+            אריזה ששווה לשמור.
           </h2>
           <p className="mt-6 text-right text-xl font-regular text-black lg:text-2xl">
             חוויה שמתחילה עוד לפני שמרכיבים את המשקפיים.

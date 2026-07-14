@@ -24,8 +24,8 @@ export default function OrangePair() {
         {/* Right: text */}
         <div dir="rtl" className="px-8 pt-0 pb-12 text-center text-black sm:px-12 lg:py-0 lg:w-1/2 lg:pl-2 lg:pr-16 lg:text-right">
           <div className="w-full lg:-translate-x-32">
-            <h2 className={`${bebasNeue.className} text-[clamp(3.5rem,15vw,5.5rem)] leading-none tracking-tight sm:text-8xl lg:text-[clamp(48px,9vw,220px)]!`}>
-              POLARIZED-X
+            <h2 dir="ltr" className={`${bebasNeue.className} text-[clamp(3.5rem,15vw,5.5rem)] leading-none tracking-tight sm:text-8xl lg:text-[clamp(48px,9vw,220px)]!`}>
+              POLARIZED-<img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline invert" />
             </h2>
             <p className="-mt-2 text-xl font-semibold sm:text-xl lg:text-[clamp(1.5rem,2.2vw,2.5rem)]!">קלסיקה אמיתית שהולכת איתך.</p>
             <Link

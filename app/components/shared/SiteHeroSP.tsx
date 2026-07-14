@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Bebas_Neue, Inter } from "next/font/google";
+import { Bebas_Neue } from "next/font/google";
 
 const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: "400" });
-const inter = Inter({ subsets: ["latin"], weight: "700" });
 
 export default function SiteHeroSP() {
   return (
@@ -21,7 +20,7 @@ export default function SiteHeroSP() {
           />
           <div dir="ltr" className="absolute inset-0 flex flex-col items-center justify-end px-6 pb-6 text-center">
             <h1 className={`${bebasNeue.className} text-white leading-[0.95] tracking-tight text-7xl sm:text-8xl`}>
-              POLARIZED-<span className={inter.className}>X</span>
+              POLARIZED-<img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
             </h1>
             <p dir="rtl" className="mt-1 text-center text-white/90 font-normal text-2xl">
               קלסיקה אמיתית שהולכת איתך.
@@ -88,7 +87,7 @@ export default function SiteHeroSP() {
           />
           <div className="absolute inset-0 flex flex-col justify-center translate-x-6 translate-y-12 px-8 lg:px-16">
             <h1 className={`${bebasNeue.className} text-white leading-[0.95] tracking-tight text-[clamp(3rem,8vw,13.5rem)]`}>
-              POLARIZED-<span className={inter.className}>X</span>
+              POLARIZED-<img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
             </h1>
             <p dir="rtl" className="-mt-1 text-left text-white/90 font-normal text-4xl">
               קלסיקה אמיתית שהולכת איתך.

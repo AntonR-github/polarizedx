@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Bebas_Neue, Inter } from "next/font/google";
+import { Bebas_Neue } from "next/font/google";
 
 const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: "400" });
-const inter = Inter({ subsets: ["latin"], weight: "700" });
 
 export default function AboutHero() {
   return (
@@ -12,8 +11,8 @@ export default function AboutHero() {
       <div dir="ltr" className="flex flex-col lg:grid lg:grid-cols-[75%_25%] lg:items-stretch">
 
         {/* Left: background image + overlay content */}
-        <div className="order-2 lg:order-none">
-          <div className="relative min-h-[420px] sm:min-h-[520px] lg:min-h-175">
+        <div className="order-2 lg:order-none lg:h-full">
+          <div className="relative min-h-[420px] sm:min-h-[520px] lg:h-full lg:min-h-175">
             <Image
               src="/images/about/aboutHero.jpg"
               alt=""
@@ -24,7 +23,7 @@ export default function AboutHero() {
             />
             <div className="absolute inset-0 z-10 flex flex-col items-center justify-end px-6 pb-0 text-center translate-y-6 sm:justify-center sm:px-12 sm:translate-y-28 lg:items-start lg:justify-center lg:pb-0 lg:text-left lg:translate-x-24 lg:translate-y-42 lg:px-16">
               <h1 className={`${bebasNeue.className} text-white leading-[0.95] tracking-tight text-[clamp(4rem,17vw,7rem)] sm:text-8xl lg:text-[clamp(3rem,8vw,12.5rem)]`}>
-                POLARIZED-<span className={inter.className}>X</span>
+                POLARIZED-<img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
               </h1>
               <p dir="rtl" className="-mt-1 text-center text-white/90 font-normal text-2xl sm:text-3xl lg:text-left lg:text-4xl">
                 קלסיקה אמיתית שהולכת איתך.
@@ -53,7 +52,9 @@ export default function AboutHero() {
           </h2>
           <div className="flex flex-row items-baseline gap-2 lg:flex-col lg:items-center lg:gap-0">
             <p className="text-2xl sm:text-4xl">אז מה ה-</p>
-            <p className={`${inter.className} text-8xl leading-none sm:text-8xl lg:text-[8.5rem]`}>X</p>
+            <p className="text-8xl leading-none sm:text-8xl lg:text-[8.5rem]">
+              <img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
+            </p>
             <p className="text-2xl sm:text-4xl">שלנו</p>
           </div>
           <Link

@@ -12,12 +12,12 @@ export default function BluePair() {
       <div dir="ltr" className="flex flex-col items-stretch lg:flex-row">
 
         {/* Left: text */}
-        <div dir="rtl" className="flex flex-col justify-center px-8 pt-12 pb-8 text-right text-black sm:px-12 lg:w-1/2 lg:py-0 lg:pr-[min(240px,16.67vw)] lg:pl-2">
+        <div dir="rtl" className="flex flex-col justify-center px-8 pt-12 pb-8 text-center text-black sm:px-12 sm:text-right lg:w-1/2 lg:py-0 lg:pr-[min(240px,16.67vw)] lg:pl-2">
           <div className="w-full">
-            <h2 className={`${bebasNeue.className} text-6xl leading-none tracking-tight sm:text-8xl md:text-9xl lg:text-[clamp(40px,6vw,160px)]!`}>
-              POLARIZED-<span className={inter.className}>X</span>
+            <h2 dir="ltr" className={`${bebasNeue.className} text-6xl leading-none tracking-tight sm:text-8xl md:text-9xl lg:text-[clamp(40px,6vw,160px)]!`}>
+              POLARIZED-<img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline invert" />
             </h2>
-            <div className="mt-6 flex flex-col items-start justify-center gap-4 sm:flex-row sm:items-end sm:justify-start lg:gap-6">
+            <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-end sm:justify-start lg:gap-6">
               <p className="text-xl font-semibold sm:text-3xl md:text-4xl lg:text-xl! xl:text-3xl!">
                 <span className={inter.className}>POLARIZED</span> אמיתיים.
                 <br />
