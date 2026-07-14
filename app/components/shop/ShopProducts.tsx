@@ -44,7 +44,7 @@ function ProductCard({ p }: { p: StoreProduct }) {
             {reviewCount > 0 && <span className="text-xs text-zinc-400">({reviewCount})</span>}
           </div>
           {p.color && <p className="text-sm text-zinc-500">צבע: {p.color}</p>}
-          <p className="text-2xl font-semibold text-black">{p.price} ₪</p>
+          <p className="text-center text-2xl font-semibold text-black">{p.price} ₪</p>
         </div>
       </Link>
       <div className="px-4 pb-4 pt-3">
