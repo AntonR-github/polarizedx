@@ -22,8 +22,8 @@ function ProductCard({ p }: { p: StoreProduct }) {
         />
       </div>
       <div dir="rtl" className="flex flex-col gap-1 border-t border-zinc-100 px-3 py-2.5 text-right">
-        <span className="line-clamp-2 text-lg font-bold leading-snug text-black">{p.name}</span>
-        <span className="text-base font-normal text-black">{p.price} ₪</span>
+        <span className="line-clamp-2 min-h-[3.1rem] text-lg font-bold leading-snug text-black">{p.name}</span>
+        <span className="text-lg font-semibold text-black">{p.price} ₪</span>
       </div>
     </Link>
   );
