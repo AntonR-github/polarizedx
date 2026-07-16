@@ -1,103 +1,146 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Bebas_Neue } from "next/font/google";
 
-const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: "400" });
+/* The promo panel's diagonal gold edge. Kept here so the gold layer and the
+   textured layer above it always slice on the exact same angle. */
+const BLADE = { ["--blade" as string]: "30%" };
+const MOBILE_BLADE = { ["--blade-y" as string]: "9%" };
+
+function PromoPanel() {
+  return (
+    <div dir="rtl" className="absolute inset-0 flex translate-x-[12%] flex-col items-center justify-center gap-3 px-3 text-center xl:gap-4">
+      <Image
+        src="/images/hero/puxonit-trim.png"
+        alt="PUT AN X ON IT"
+        width={132}
+        height={169}
+        priority
+        className="h-auto w-[74%] max-w-36 select-none"
+      />
+      <span className="h-px w-14 bg-gold" />
+      <p className="font-semibold leading-tight text-white text-[clamp(2.6rem,3vw,3rem)]">
+        זוג שני
+        <br />
+        ב-
+        <span className="align-middle font-black text-gold text-[clamp(3.5rem,4.5vw,5.4rem)]">99</span>
+        {" "}₪
+        <br />
+        בלבד
+      </p>
+      <p className="text-[1.1rem] leading-tight text-white">הזול מביניהם · עד גמר המלאי</p>
+    </div>
+  );
+}
 
 export default function SiteHero() {
   return (
     <section className="w-full bg-black">
-      {/* ── Mobile stack ── (image+title → button → product photo → PUT AN X panel) */}
+      {/* ── Mobile ── (photo w/ overlaid headline + CTA → bladed promo band) */}
       <div className="md:hidden">
-        <div className="mt-22 sm:mt-10 lg:mt-0 relative min-h-96 sm:min-h-96 lg:min-h-88">
-          <Image
-            src="/images/mobile/mobilebghomepage.jpg"
-            alt=""
-            fill
-            priority
-            quality={100}
-            className="object-cover object-[center_60%] select-none pointer-events-none"
-          />
-          <div dir="ltr" className="absolute inset-0 flex flex-col items-center justify-end px-6 pb-6 text-center">
-            <h1 className={`${bebasNeue.className} text-white leading-[0.95] tracking-tight text-7xl sm:text-8xl`}>
-              POLARIZED-<img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
-            </h1>
-            <p dir="rtl" className="mt-1 text-center text-white/90 font-normal text-2xl">
-                 משקפי שמש שהולכים איתך.
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-col">
-          <div className="flex justify-center px-6 pt-3 pb-0">
-            <Link
-              href="/shop"
-              dir="rtl"
-              className="inline-flex items-center gap-4 bg-white px-12 py-4 text-2xl font-semibold text-black transition-colors hover:bg-white hover:text-black"
-            >
-              <span>לרכישה</span>
-            </Link>
-          </div>
-        </div>
-
-        <div className="relative h-80 w-full bg-black px-6 pt-6 pb-10">
-          <Image
-            src="/images/hero/puxonit-v4.png"
-            alt="PUT AN X ON IT"
-            fill
-            className="scale-200 object-contain"
-          />
-        </div>
-      </div>
-
-      {/* ── Desktop split hero ── (dir=ltr locks image-left / panel-right to match design) */}
-      <div dir="ltr" className="mt-24 hidden md:grid md:grid-cols-[80%_20%] items-stretch">
-
-        {/* Left: background image + overlay content */}
-        <div className="relative min-h-100 lg:min-h-130 xl:min-h-160">
-          <Image
-            src="/images/mobile/mobilebghomepage.jpg"
-            alt=""
-            fill
-            priority
-            quality={100}
-            className="object-cover object-[center_28%] select-none pointer-events-none lg:hidden"
-          />
+        <div className="mt-14 sm:mt-10 relative min-h-110">
           <Image
             src="/images/hero/heroimage.jpg"
             alt=""
             fill
             priority
             quality={100}
-            className="hidden object-cover object-[center_10%] select-none pointer-events-none lg:block"
+            sizes="100vw"
+            className="object-cover scale-150 object-[center_60%] select-none pointer-events-none"
           />
-          <div className="absolute inset-0 flex flex-col justify-center translate-x-6 translate-y-12 px-8 lg:px-16">
-            <h1 className={`${bebasNeue.className} text-white leading-[0.95] tracking-tight text-[clamp(3rem,8vw,13.5rem)]`}>
-              POLARIZED-<img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
+          <div className="absolute inset-0" />
+          <div dir="rtl" className="absolute inset-x-0 bottom-0 flex flex-col gap-3 px-6 pb-7">
+            <h1 className="text-center font-black leading-[0.92] text-white text-5xl sm:text-6xl">
+              משקפי שמש
+              <br />
+              לכל רגע
             </h1>
-            <p dir="rtl" className="-mt-1 text-left text-white/90 font-normal text-4xl">
-              קלסיקה אמיתית שהולכת איתך.
+            <p className="text-center text-xl font-normal text-white/85 sm:text-lg">
+              עיצוב על זמני. הגנה מלאה.
+            </p>
+            <Link
+              href="/shop"
+              className="mt-1 flex items-center justify-center bg-gold px-8 py-3.5 text-lg font-bold text-black transition-opacity hover:opacity-90"
+            >
+              לחץ לרכישה
+            </Link>
+            <Image src="/images/hero/glogo.png" alt="POLARIZED-X" width={123} height={16} className="h-3.5 w-auto self-center" />
+          </div>
+        </div>
+
+        {/* Promo band — the blade slices it off the photo above */}
+        <div className="relative bg-black" style={MOBILE_BLADE}>
+          <div className="hero-blade-m absolute inset-0 bg-gold" />
+          <div className="hero-blade-m-inner relative">
+            <Image
+              src="/images/hero/rbg.jpg"
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover select-none pointer-events-none"
+            />
+            <div dir="rtl" className="text-center relative flex flex-col items-center gap-1 px-6 pt-12 pb-7 text-center">
+              <p className="text-center text-2xl font-semibold leading-none text-white">זוג שני ב-</p>
+              <p className="flex items-center mr-10 justify-center gap-2 leading-none">
+                <span className="text-center font-black text-gold text-8xl">99</span>
+                <span className="text-center font-bold text-gold text-4xl">₪</span>
+              </p>
+              <p className="text-center text-3xl font-semibold leading-none text-white">בלבד</p>
+              <p className="mt-2 text-[1rem] leading-tight text-white">הזול מביניהם · עד גמר המלאי</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Desktop ── (dir=ltr locks photo-left / promo-right to match the design) */}
+      <div dir="ltr" className="mt-20 hidden md:block">
+        <div className="relative min-h-100 lg:min-h-130 xl:min-h-160">
+          {/* Full-bleed photo — runs under the promo panel so the blade reveals it */}
+          <Image
+            src="/images/hero/heroimage.jpg"
+            alt=""
+            fill
+            priority
+            quality={100}
+            sizes="100vw"
+            className="object-cover object-[center_10%] select-none pointer-events-none"
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-black/45" />
+
+          {/* Left: headline right-aligned, CTA + wordmark on the start edge */}
+          <div className="absolute inset-y-0 left-0 flex w-[52%] flex-col justify-center gap-4 px-8 lg:gap-5 lg:px-16">
+            <h1 dir="rtl" className="text-left font-black leading-[0.92] text-white text-[clamp(2.25rem,4.4vw,5.25rem)]">
+              משקפי שמש
+              <br />
+              לכל רגע
+            </h1>
+            <p dir="rtl" className="text-left font-normal text-white/85 text-[clamp(1.1rem,1.6vw,1.8rem)]">
+              עיצוב על זמני. הגנה מלאה.
             </p>
             <Link
               href="/shop"
               dir="rtl"
-              className="mt-8 inline-flex items-center gap-3 self-start bg-black px-14 py-4 text-2xl font-semibold text-white transition-colors hover:bg-zinc-800"
+              className="mt-1 inline-flex items-center justify-center self-start bg-gold px-16 py-3.5 font-bold text-black transition-opacity hover:opacity-90 text-[clamp(0.95rem,1.15vw,1.35rem)]"
             >
-              <span>לרכישה</span>
+              לחץ לרכישה
             </Link>
+            <Image src="/images/hero/glogo.png" alt="POLARIZED-X" width={123} height={16} className="h-3.5 w-auto self-start lg:h-4" />
           </div>
-        </div>
 
-        {/* Right: black panel split top/bottom */}
-        <div className="flex flex-col bg-black">
-          {/* PUT AN X ON IT + tagline */}
-          <div className="relative flex-1 px-2 py-6">
-            <Image
-              src="/images/hero/puxonit-v4.png"
-              alt="PUT AN X ON IT"
-              fill
-              className="object-contain"
-            />
+          {/* Right: promo panel, sliced off the photo by a diagonal gold blade */}
+          <div className="absolute inset-y-0 right-0 w-[30%] lg:w-[26%]">
+            <div className="hero-blade absolute inset-0 bg-gold" style={BLADE} />
+            <div className="hero-blade-inner absolute inset-0" style={BLADE}>
+              <Image
+                src="/images/hero/rbg.jpg"
+                alt=""
+                fill
+                priority
+                quality={100}
+                sizes="25vw"
+                className="object-cover select-none pointer-events-none"
+              />
+              <PromoPanel />
+            </div>
           </div>
         </div>
       </div>

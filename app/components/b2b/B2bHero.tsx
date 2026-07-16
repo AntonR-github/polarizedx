@@ -63,14 +63,16 @@ export default function B2bHero() {
         {/* Right: retail pitch */}
         <div
           dir="rtl"
-          className="flex order-1 min-h-fit w-full flex-col items-center justify-center gap-8 bg-black px-0 py-8 text-center text-white lg:order-2 lg:min-h-80! lg:gap-26 lg:px-6 lg:py-12"
+          className="relative order-1 min-h-115 w-full bg-black text-center text-white sm:min-h-104 lg:order-2 lg:min-h-80!"
         >
           <Image
-            src="/images/hero/puxonit-v4.png"
+            src="/images/hero/frame.png"
             alt=""
-            width={98}
-            height={202}
-            className="mt-5 h-72! scale-160 w-auto sm:h-64 lg:h-96!"
+            fill
+            priority
+            quality={100}
+            sizes="(max-width: 1024px) 100vw, 15vw"
+            className="object-contain select-none pointer-events-none lg:object-cover"
           />
         </div>
       </div>

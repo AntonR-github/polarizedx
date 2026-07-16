@@ -2,6 +2,9 @@
 
 @theme {
   --breakpoint-lg: 900px;
+
+  /* Gold — usable as bg-gold / text-gold / border-gold utilities */
+  --color-gold: #d4af37;
 }
 
 html, body {
@@ -174,7 +177,7 @@ html, body {
   /* Palette */
   --color-bg: #000000;
   --color-surface: #121212;
-  --color-gold: #c6a87a;
+  --color-gold: #d4af37;
   --color-accent: #cfbfba;
   --color-accent-base: #cfbfba;
   --color-light: #eeeeee;
@@ -188,6 +191,64 @@ html, body {
 }
 .animate-marquee {
   animation: marquee 90s linear infinite;
+}
+
+/* Hero promo panel: the gold blade slices the panel off the photo on a diagonal.
+   --blade is how far the top edge is pushed in; the inner layer repeats the same
+   polygon shifted 3px right, leaving the gold layer showing as the diagonal rule. */
+.hero-blade {
+  clip-path: polygon(var(--blade) 0, 100% 0, 100% 100%, 0 100%);
+}
+.hero-blade-inner {
+  clip-path: polygon(calc(var(--blade) + 3px) 0, 100% 0, 100% 100%, 3px 100%);
+}
+
+/* Mobile promo band: same blade, rotated to slice horizontally across the top. */
+.hero-blade-m {
+  clip-path: polygon(0 var(--blade-y), 100% 0, 100% 100%, 0 100%);
+}
+.hero-blade-m-inner {
+  clip-path: polygon(0 calc(var(--blade-y) + 3px), 100% 3px, 100% 100%, 0 100%);
+}
+
+/* FeatureBar gold icons: the source PNGs are white glyphs on transparency, so we
+   mask-fill them with the gold token rather than colour-shifting with filters. */
+.featurebar-icon-mask {
+  display: block;
+  background-color: var(--color-gold);
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+/* Cart "added" toast */
+@keyframes cart-toast-in {
+  from { opacity: 0; transform: translateY(1.25rem) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes cart-toast-check {
+  from { stroke-dashoffset: 24; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes cart-toast-progress {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+.cart-toast {
+  animation: cart-toast-in 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cart-toast-check {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: cart-toast-check 0.5s ease-out 0.14s forwards;
+}
+.cart-toast-progress {
+  transform-origin: right center;
+  animation: cart-toast-progress var(--toast-duration, 3200ms) linear forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cart-toast { animation: none; }
+  .cart-toast-check { animation: none; stroke-dashoffset: 0; }
+  .cart-toast-progress { animation-name: none; }
 }
 
 /* Layout */

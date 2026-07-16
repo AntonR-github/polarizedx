@@ -5,11 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 const collection = [
-  { label: "WILD X", href: "/shop/wild-x" },
-  { label: "LEOPARD X", href: "/shop/leopard-x" },
-  { label: "NAVY X", href: "/shop/navy-x" },
-  { label: "BLACK X", href: "/shop/black-x" },
-  { label: "CLEAR X", href: "/shop/clear-x" },
+  { label: "BLACK X", href: "/shop/black-x-polarized-sunglasses" },
+  { label: "MULTICOLOR X", href: "/shop/multicolor-x-polarized-sunglasses" },
+  { label: "WOOD X", href: "/shop/wood-x-polarized-sunglasses" },
+  { label: "WILD X", href: "/shop/wild-x-polarized-sunglasses" },
+  { label: "BLUE X", href: "/shop/blue-x-polarized-sunglasses" },
+  { label: "CLEAR X", href: "/shop/clear-x-polarized-sunglasses" },
 ];
 
 const brand = [
@@ -74,6 +75,69 @@ const socials = [
     ),
   },
 ];
+
+function Newsletter() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit() {
+    if (!email.trim()) return;
+    setStatus("loading");
+    setMessage("");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setStatus("error");
+        setMessage(data.error ?? "שגיאה בהרשמה");
+        return;
+      }
+      setStatus("success");
+      setMessage("נרשמת בהצלחה!");
+      setEmail("");
+    } catch {
+      setStatus("error");
+      setMessage("שגיאה בהרשמה. אנא נסה שוב.");
+    }
+  }
+
+  return (
+    <div className="mt-8 text-center md:mt-0">
+      <p className="text-sm leading-relaxed text-zinc-300">
+        הישאר מעודכן קולקציה חדשה כל שנה.
+        <br />
+        תהיה הראשון לדעת.
+      </p>
+      <div className="mx-auto mt-4 flex max-w-xs flex-col gap-3">
+        <input
+          type="email"
+          placeholder="כתובת אימייל"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+          dir="rtl"
+          className="w-full rounded-md border border-white/20 bg-transparent px-4 py-2.5 text-sm text-white outline-none placeholder:text-zinc-500"
+        />
+        <button
+          type="button"
+          onClick={handleSubmit}
+          disabled={status === "loading"}
+          className="w-full rounded-md bg-white px-4 py-2.5 text-sm font-medium text-black transition-colors hover:bg-white/90 disabled:opacity-60"
+        >
+          {status === "loading" ? "נרשם..." : "הרשמה"}
+        </button>
+        {message && (
+          <p className={`text-xs ${status === "success" ? "text-green-400" : "text-red-400"}`}>{message}</p>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function LinkColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
@@ -167,26 +231,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div className="mt-8 text-center md:mt-0">
-            <p className="text-sm leading-relaxed text-zinc-300">
-              הישאר מעודכן קולקציה חדשה כל שנה.
-              <br />
-              תהיה הראשון לדעת.
-            </p>
-            <div className="mx-auto mt-4 flex max-w-xs flex-col gap-3">
-              <input
-                type="email"
-                placeholder="כתובת אימייל"
-                className="w-full rounded-md border border-white/20 bg-transparent px-4 py-2.5 text-sm text-white outline-none placeholder:text-zinc-500"
-              />
-              <button
-                type="button"
-                className="w-full rounded-md bg-white px-4 py-2.5 text-sm font-medium text-black transition-colors hover:bg-white/90"
-              >
-                הרשמה
-              </button>
-            </div>
-          </div>
+          <Newsletter />
         </div>
 
         <div className="order-2 border-t border-white/10 md:order-4" />

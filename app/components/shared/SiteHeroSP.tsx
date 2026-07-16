@@ -4,7 +4,7 @@ import { Bebas_Neue } from "next/font/google";
 
 const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: "400" });
 
-export default function SiteHeroSP() {
+export default function SiteHeroSP({ hideMobileProduct = false }: { hideMobileProduct?: boolean }) {
   return (
     <section className="w-full bg-black">
       {/* ── Mobile stack ── (image+title → button → product photo → PUT AN X panel) */}
@@ -28,7 +28,7 @@ export default function SiteHeroSP() {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white">
+        <div className={`flex flex-col bg-white ${hideMobileProduct ? "hidden" : ""}`}>
           <div className="flex justify-center px-6 pt-3 pb-0">
             <Link
               href="/shop"
@@ -49,7 +49,7 @@ export default function SiteHeroSP() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-1 bg-black px-6 pt-6 pb-10 text-center">
+        <div className={`flex flex-col items-center justify-center gap-1 bg-black px-6 pt-6 pb-10 text-center ${hideMobileProduct ? "hidden" : ""}`}>
           <div className="relative h-64 w-full">
             <Image
               src="/images/hero/puxonit-v4.png"

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Bebas_Neue, Inter } from "next/font/google";
 
 const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: "400" });
@@ -18,12 +17,6 @@ export default function ShopHero() {
               POLARIZED-<img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline invert" />
             </h1>
             <p className="shophero-subtitle text-2xl font-regular text-black/80">קלסיקה אמיתית שהולכת איתך.</p>
-            <Link
-              href="/shop"
-              className="mt-6 inline-flex items-center gap-4 self-center bg-black px-10 py-4 text-lg font-semibold text-white transition-colors hover:bg-zinc-800 lg:self-start"
-            >
-              <span>לרכישה</span>
-            </Link>
           </div>
           <div className="shophero-image-width relative mt-6 h-56 w-full sm:h-72 lg:absolute lg:inset-y-0 lg:left-[70%] lg:mt-10 lg:h-auto! lg:-translate-x-1/2">
             <Image

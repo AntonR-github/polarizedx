@@ -5,7 +5,7 @@ import TrustBadges from "../components/shared/TrustBadges";
 export default function ContactPage() {
   return (
     <main>
-      <SiteHeroSP />
+      <SiteHeroSP hideMobileProduct />
       <ContactForm />
       <TrustBadges />
     </main>

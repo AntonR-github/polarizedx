@@ -85,6 +85,22 @@ export default function Navbar() {
           : "lg:bg-black lg:border-b lg:border-white/10"
       }`}
     >
+      {/* Free shipping marquee */}
+      <div dir="ltr" className="overflow-hidden bg-black">
+        <div className="flex w-max animate-marquee">
+          {[0, 1].map((group) => (
+            <div key={group} className="flex shrink-0 items-center" aria-hidden={group === 1}>
+              {Array.from({ length: 6 }).map((_, i) => (
+                <span key={i} className="flex items-center gap-2 px-60 text-base font-medium whitespace-nowrap text-white">
+                  <Image src="/icn/wdelivery.png" alt="" width={16} height={16} className="h-4 w-4" />
+                  משלוח חינם בקנייה מעל 199 ₪ · אספקה עד 3 ימי עסקים
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       <nav className="relative mx-auto max-w-5xl lg:max-w-7xl xl:max-w-360 2xl:max-w-420 px-3 sm:px-6 lg:px-4 lg:h-14 lg:py-2 flex flex-col lg:flex-row lg:items-center lg:justify-between">
 
         {/* ── MOBILE + TABLET: single-row layout ── */}
@@ -176,22 +192,6 @@ export default function Navbar() {
 
         </div>
       </nav>
-
-      {/* Free shipping marquee */}
-      <div dir="ltr" className="overflow-hidden bg-black py-1.5">
-        <div className="flex w-max animate-marquee">
-          {[0, 1].map((group) => (
-            <div key={group} className="flex shrink-0 items-center" aria-hidden={group === 1}>
-              {Array.from({ length: 6 }).map((_, i) => (
-                <span key={i} className="flex items-center gap-2 px-60 text-base font-medium whitespace-nowrap text-white">
-                  <Image src="/icn/wdelivery.png" alt="" width={16} height={16} className="h-4 w-4" />
-                  משלוח חינם בקנייה מעל 199 ₪ · אספקה עד 3 ימי עסקים
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Mobile menu */}
       {mobileOpen && (

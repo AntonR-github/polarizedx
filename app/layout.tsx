@@ -5,6 +5,7 @@ import { CartProvider } from "./context/CartContext";
 import { FavoritesProvider } from "./context/FavoritesContext";
 import Navbar from "./components/shared/Navbar";
 import Footer from "./components/shared/Footer";
+import CartToast from "./components/shared/CartToast";
 
 const heebo = Heebo({ subsets: ["hebrew", "latin"], weight: "variable", variable: "--font-heebo" });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
             <Navbar />
             {children}
             <Footer />
+            <CartToast />
           </CartProvider>
         </FavoritesProvider>
       </body>

@@ -72,6 +72,26 @@ export default function FeaturedProducts({ products }: { products: StoreProduct[
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, onSelect]);
 
+  const [desktopEmblaRef, desktopEmblaApi] = useEmblaCarousel({ direction: "ltr", align: "start" });
+  const [desktopSelectedIndex, setDesktopSelectedIndex] = useState(0);
+  const [desktopScrollSnaps, setDesktopScrollSnaps] = useState<number[]>([]);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  const onDesktopSelect = useCallback((api: NonNullable<typeof desktopEmblaApi>) => {
+    setDesktopSelectedIndex(api.selectedScrollSnap());
+    setCanScrollPrev(api.canScrollPrev());
+    setCanScrollNext(api.canScrollNext());
+  }, []);
+
+  useEffect(() => {
+    if (!desktopEmblaApi) return;
+    setDesktopScrollSnaps(desktopEmblaApi.scrollSnapList());
+    onDesktopSelect(desktopEmblaApi);
+    desktopEmblaApi.on("select", onDesktopSelect);
+    desktopEmblaApi.on("reInit", onDesktopSelect);
+  }, [desktopEmblaApi, onDesktopSelect]);
+
   return (
     <section className="w-full pt-5 pb-5 bg-[#DBDBDB]">
       {/* ── Mobile + tablet: text/CTA above slider ── */}
@@ -101,16 +121,58 @@ export default function FeaturedProducts({ products }: { products: StoreProduct[
         )}
       </div>
 
-      {/* ── Desktop: grid ── */}
+      {/* ── Desktop: slider ── */}
       {/* dir=ltr locks card order NAVY X → BLACK X with the text block on the right */}
-      <div
-        dir="ltr"
-        className="mx-auto hidden w-full max-w-[1650px] lg:grid lg:grid-cols-[repeat(4,1fr)_minmax(200px,340px)] lg:gap-3 lg:px-12 lg:py-10"
-      >
-        {products.map((p) => (
-          <ProductCard key={p.id} p={p} />
-        ))}
-        <TextCta />
+      <div dir="ltr" className="mx-auto hidden w-full max-w-[1650px] lg:flex lg:items-center lg:gap-6 lg:px-12 lg:py-10">
+        <div className="relative min-w-0 flex-1">
+          <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={desktopEmblaRef}>
+            <div className="flex gap-3">
+              {products.map((p) => (
+                <div key={p.id} className="min-w-0 shrink-0 grow-0 basis-[clamp(14rem,18vw,20rem)]">
+                  <ProductCard p={p} />
+                </div>
+              ))}
+            </div>
+          </div>
+          <button
+            type="button"
+            aria-label="הקודם"
+            onClick={() => desktopEmblaApi?.scrollPrev()}
+            disabled={!canScrollPrev}
+            className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white text-black shadow-md transition-opacity hover:bg-zinc-100 disabled:pointer-events-none disabled:opacity-0"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.2} stroke="currentColor" className="h-5 w-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            aria-label="הבא"
+            onClick={() => desktopEmblaApi?.scrollNext()}
+            disabled={!canScrollNext}
+            className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-white text-black shadow-md transition-opacity hover:bg-zinc-100 disabled:pointer-events-none disabled:opacity-0"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.2} stroke="currentColor" className="h-5 w-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+          {desktopScrollSnaps.length > 1 && (
+            <div className="mt-6 flex justify-center gap-2">
+              {desktopScrollSnaps.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  aria-label={`עבור למוצר ${i + 1}`}
+                  onClick={() => desktopEmblaApi?.scrollTo(i)}
+                  className={`h-2 rounded-full transition-all ${i === desktopSelectedIndex ? "w-6 bg-black" : "w-2 bg-black/25"}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="w-55 shrink-0 xl:w-[320px]">
+          <TextCta />
+        </div>
       </div>
     </section>
   );

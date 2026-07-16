@@ -56,7 +56,7 @@ export default function ProductDetail({ product, relatedProducts = [], reviews =
   }
 
   const InfoHeader = ({ mobile = false }: { mobile?: boolean }) => (
-    <div className="flex flex-col gap-4" dir="rtl">
+    <div className="flex flex-col gap-4 mt-10 sm:mt-0" dir="rtl">
       {product.badge && (
         <span className="hidden sm:inline-flex self-end text-sm font-normal text-white px-3 py-1 rounded-lg tracking-widest" style={{ background: "#1a1a1a" }}>{product.badge}</span>
       )}
@@ -133,7 +133,7 @@ export default function ProductDetail({ product, relatedProducts = [], reviews =
           <div className="rounded-lg py-3 px-4 text-center text-sm font-medium text-gray-700" style={{ background: "#f5f5f7" }}>
             הוסף זוג שני ב-100₪ בלבד. כל דגם.
           </div>
-          <div className="flex items-center justify-between" dir="rtl">
+          <div className="flex items-center justify-start gap-4" dir="rtl">
             <span className="text-base font-medium text-black">כמות</span>
             <div className="flex items-center gap-7 rounded-lg border px-6 py-4" style={{ borderColor: "#1a1a1a" }}>
               <button onClick={() => setQty((q) => q + 1)} className="text-2xl font-normal text-black hover:opacity-70 transition-opacity">+</button>
@@ -159,7 +159,7 @@ export default function ProductDetail({ product, relatedProducts = [], reviews =
               <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
               <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
             </svg>
-            הוסף לעגלה
+            הוסף לסל
           </span>
         </button>
         <button className="w-full py-2.5 text-black text-base lg:text-lg font-normal rounded-lg border-2 transition-colors hover:bg-gray-50"
@@ -681,7 +681,7 @@ function RelatedProducts({ products }: { products: Product[] }) {
                       material: p.material,
                     });
                   }}>
-                  הוסף לעגלה
+                  הוסף לסל
                 </button>
               </div>
             </a>
