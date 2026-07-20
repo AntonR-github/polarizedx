@@ -10,6 +10,23 @@ export default function AboutHero() {
       {/* dir=ltr locks image-left / panel-right to match design */}
       <div dir="ltr" className="flex flex-col lg:grid lg:grid-cols-[75%_25%] lg:items-stretch">
 
+        {/* Mobile/tablet only: story text panel, shown above the hero image */}
+        <div
+          dir="rtl"
+          className="order-1 flex flex-col items-center justify-center gap-0 bg-black px-6 py-10 text-center text-white sm:gap-1 lg:hidden"
+        >
+          <h2 className="text-5xl mt-14 font-regular leading-tight sm:text-7xl">
+            הסיפור{" "}שלנו
+          </h2>
+          <div className="flex flex-row items-baseline gap-2">
+            <p className="text-2xl sm:text-4xl">אז מה ה-</p>
+            <p className="text-8xl leading-none sm:text-8xl">
+              <img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
+            </p>
+            <p className="text-2xl sm:text-4xl">שלנו</p>
+          </div>
+        </div>
+
         {/* Left: background image + overlay content */}
         <div className="order-2 lg:order-none lg:h-full">
           <div className="relative min-h-[420px] sm:min-h-[520px] lg:h-full lg:min-h-175">
@@ -41,29 +58,14 @@ export default function AboutHero() {
         </div>
 
         {/* Right: story pitch */}
-        <div
-          dir="rtl"
-          className="order-1 flex min-h-[240px] flex-col items-center justify-center gap-0 bg-black px-6 py-10 text-center text-white sm:gap-1 lg:order-none lg:min-h-120 lg:gap-6 lg:py-12"
-        >
-          <h2 className="mt-10 text-5xl font-regular leading-tight sm:text-7xl lg:text-6xl xl:text-8xl">
-            הסיפור
-            <br className="hidden lg:inline" />
-            {" "}שלנו
-          </h2>
-          <div className="flex flex-row items-baseline gap-2 lg:flex-col lg:items-center lg:gap-0">
-            <p className="text-2xl sm:text-4xl">אז מה ה-</p>
-            <p className="text-8xl leading-none sm:text-8xl lg:text-[8.5rem]">
-              <img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
-            </p>
-            <p className="text-2xl sm:text-4xl">שלנו</p>
-          </div>
-          <Link
-            href="/shop"
-            className="hidden items-center gap-4 border border-white bg-white px-8 py-3 text-xl font-semibold text-black transition-colors hover:bg-white/90 lg:inline-flex"
-          >
-            <span>לכל הקולקציה</span>
-            <span aria-hidden>←</span>
-          </Link>
+        <div className="relative order-1 hidden min-h-[240px] overflow-hidden bg-black lg:order-none lg:block lg:min-h-120">
+          <Image
+            src="/images/hero/frame-removebg.png"
+            alt="PUT AN X ON IT"
+            fill
+            quality={100}
+            className="scale-150 object-contain select-none pointer-events-none"
+          />
         </div>
       </div>
     </section>

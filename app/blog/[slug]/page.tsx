@@ -1,8 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "../../components/shared/Navbar";
-import Footer from "../../components/shared/Footer";
 import { getBlog, getBlogs } from "../../../lib/cms";
 
 export async function generateStaticParams() {
@@ -37,7 +35,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
-      <Navbar />
       <main className="flex-1 bg-black min-h-screen">
 
         {post.featuredImage && (
@@ -76,7 +73,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         </div>
       </main>
-      <Footer />
     </>
   );
 }

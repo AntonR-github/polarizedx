@@ -21,10 +21,10 @@ export default function FeatureBar() {
             className="flex flex-1 flex-col-reverse items-center gap-2.5 py-3 sm:flex-none sm:flex-row sm:gap-4 md:gap-5"
           >
             <div className="text-center sm:text-right">
-              <div className={`${montserrat.className} featurebar-title hidden whitespace-nowrap font-semibold tracking-widest text-white sm:block sm:text-lg sm:tracking-[0.15em] md:text-2xl`}>
+              <div className={`${montserrat.className} featurebar-title whitespace-nowrap font-semibold tracking-widest text-white sm:text-lg sm:tracking-[0.15em] md:text-2xl`}>
                 {f.en}
               </div>
-              <div dir="rtl" className="featurebar-subtitle text-xs font-normal leading-snug text-white/60 sm:whitespace-nowrap sm:text-sm md:text-lg">
+              <div dir="rtl" className="featurebar-subtitle text-xs font-normal leading-snug text-white sm:whitespace-nowrap sm:text-sm md:text-lg">
                 {f.he}
               </div>
             </div>

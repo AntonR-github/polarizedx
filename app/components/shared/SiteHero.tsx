@@ -4,7 +4,7 @@ import Link from "next/link";
 /* The promo panel's diagonal gold edge. Kept here so the gold layer and the
    textured layer above it always slice on the exact same angle. */
 const BLADE = { ["--blade" as string]: "30%" };
-const MOBILE_BLADE = { ["--blade-y" as string]: "9%" };
+const MOBILE_BLADE = { ["--blade-y" as string]: "16%" };
 
 function PromoPanel() {
   return (
@@ -37,7 +37,7 @@ export default function SiteHero() {
     <section className="w-full bg-black">
       {/* ── Mobile ── (photo w/ overlaid headline + CTA → bladed promo band) */}
       <div className="md:hidden">
-        <div className="mt-14 sm:mt-10 relative min-h-110">
+        <div className="mt-34 sm:mt-10 relative min-h-110">
           <Image
             src="/images/hero/heroimage.jpg"
             alt=""
@@ -45,10 +45,10 @@ export default function SiteHero() {
             priority
             quality={100}
             sizes="100vw"
-            className="object-cover scale-150 object-[center_60%] select-none pointer-events-none"
+            className="object-cover scale-150 -translate-y-24 object-[center_60%] select-none pointer-events-none"
           />
           <div className="absolute inset-0" />
-          <div dir="rtl" className="absolute inset-x-0 bottom-0 flex flex-col gap-3 px-6 pb-7">
+          <div dir="rtl" className="absolute inset-x-0 bottom-0 flex flex-col gap-3 px-6 pb-19">
             <h1 className="text-center font-black leading-[0.92] text-white text-5xl sm:text-6xl">
               משקפי שמש
               <br />
@@ -59,24 +59,26 @@ export default function SiteHero() {
             </p>
             <Link
               href="/shop"
-              className="mt-1 flex items-center justify-center bg-gold px-8 py-3.5 text-lg font-bold text-black transition-opacity hover:opacity-90"
+              className="mt-1 flex items-center justify-center self-center w-[72%] bg-gold px-8 py-3.5 text-xl font-bold text-black transition-opacity hover:opacity-90"
             >
               לחץ לרכישה
             </Link>
-            <Image src="/images/hero/glogo.png" alt="POLARIZED-X" width={123} height={16} className="h-3.5 w-auto self-center" />
+            <Image src="/images/hero/glogo.png" alt="POLARIZED-X" width={123} height={16} className="h-4.5 w-auto self-center" />
           </div>
         </div>
 
-        {/* Promo band — the blade slices it off the photo above */}
-        <div className="relative bg-black" style={MOBILE_BLADE}>
+        {/* Promo band — the blade slices it off the photo above. The band is
+            pulled up over the photo and left transparent, so the wedge above
+            the gold rule reveals the photo rather than flat black. */}
+        <div className="relative -mt-12" style={MOBILE_BLADE}>
           <div className="hero-blade-m absolute inset-0 bg-gold" />
           <div className="hero-blade-m-inner relative">
             <Image
-              src="/images/hero/rbg.jpg"
+              src="/images/hero/rbg-wide.jpg"
               alt=""
               fill
               sizes="100vw"
-              className="object-cover select-none pointer-events-none"
+              className="object-cover object-center select-none pointer-events-none"
             />
             <div dir="rtl" className="text-center relative flex flex-col items-center gap-1 px-6 pt-12 pb-7 text-center">
               <p className="text-center text-2xl font-semibold leading-none text-white">זוג שני ב-</p>
@@ -108,12 +110,12 @@ export default function SiteHero() {
 
           {/* Left: headline right-aligned, CTA + wordmark on the start edge */}
           <div className="absolute inset-y-0 left-0 flex w-[52%] flex-col justify-center gap-4 px-8 lg:gap-5 lg:px-16">
-            <h1 dir="rtl" className="text-left font-black leading-[0.92] text-white text-[clamp(2.25rem,4.4vw,5.25rem)]">
+            <h1 dir="rtl" className="text-left font-semibold leading-[0.92] text-white text-[clamp(3.5rem,5.5vw,6.5rem)]">
               משקפי שמש
               <br />
               לכל רגע
             </h1>
-            <p dir="rtl" className="text-left font-normal text-white/85 text-[clamp(1.1rem,1.6vw,1.8rem)]">
+            <p dir="rtl" className="text-left font-normal text-white/85 text-[clamp(1.6rem,2.1vw,2.3rem)]">
               עיצוב על זמני. הגנה מלאה.
             </p>
             <Link
@@ -123,7 +125,7 @@ export default function SiteHero() {
             >
               לחץ לרכישה
             </Link>
-            <Image src="/images/hero/glogo.png" alt="POLARIZED-X" width={123} height={16} className="h-3.5 w-auto self-start lg:h-4" />
+            <Image src="/images/hero/glogo.png" alt="POLARIZED-X" width={123} height={16} className="h-3.5 w-auto self-start lg:h-4.5" />
           </div>
 
           {/* Right: promo panel, sliced off the photo by a diagonal gold blade */}

@@ -10,6 +10,15 @@ export default function B2bHero() {
       {/* dir=ltr locks image-left / panel-right to match design */}
       <div dir="ltr" className="mt-10 grid grid-cols-1 lg:grid-cols-[85%_15%] items-stretch">
 
+        {/* Mobile/tablet only: pitch text panel, shown above the hero image */}
+        <div dir="rtl" className="order-1 flex items-center justify-center bg-black px-4 py-6 text-center lg:hidden">
+          <p className="text-xl mt-10 font-bold leading-snug text-white sm:text-2xl">
+            מותג אסתטי, שקט, שיישב מדהים
+            <br />
+            בעסק שלך. ויעשה את העבודה במקומך.
+          </p>
+        </div>
+
         {/* Left: background image + overlay content */}
         <div className="relative order-2 w-full min-h-96 sm:min-h-0 sm:aspect-375/244 lg:order-1 lg:aspect-auto! lg:min-h-180!">
           <Image
@@ -63,7 +72,7 @@ export default function B2bHero() {
         {/* Right: retail pitch */}
         <div
           dir="rtl"
-          className="relative order-1 min-h-115 w-full bg-black text-center text-white sm:min-h-104 lg:order-2 lg:min-h-80!"
+          className="relative order-1 hidden min-h-115 w-full bg-black text-center text-white sm:min-h-104 lg:order-2 lg:block lg:min-h-80!"
         >
           <Image
             src="/images/hero/frame.png"

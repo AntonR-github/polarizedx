@@ -13,7 +13,7 @@ function ProductCard({ p }: { p: StoreProduct }) {
   return (
     <Link
       href={`/shop/${p.handle || p.id}`}
-      className="group mx-auto flex w-full max-w-90 flex-col self-start rounded-md bg-white transition-shadow hover:shadow-md"
+      className="group mx-auto flex w-full max-w-90 flex-col self-start rounded-md bg-white transition-shadow hover:shadow-md lg:max-w-none"
     >
       <div className="relative h-56">
         <Image
@@ -100,7 +100,7 @@ export default function FeaturedProducts({ products }: { products: StoreProduct[
         <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
           <div dir="rtl" className="flex -ms-4">
             {products.map((p) => (
-              <div key={p.id} className="min-w-0 shrink-0 grow-0 basis-[70%] ps-4 sm:basis-[45%]">
+              <div key={p.id} className="min-w-0 shrink-0 grow-0 basis-full ps-4 sm:basis-1/2">
                 <ProductCard p={p} />
               </div>
             ))}
@@ -126,9 +126,9 @@ export default function FeaturedProducts({ products }: { products: StoreProduct[
       <div dir="ltr" className="mx-auto hidden w-full max-w-[1650px] lg:flex lg:items-center lg:gap-6 lg:px-12 lg:py-10">
         <div className="relative min-w-0 flex-1">
           <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={desktopEmblaRef}>
-            <div className="flex gap-3">
+            <div className="flex -ml-1">
               {products.map((p) => (
-                <div key={p.id} className="min-w-0 shrink-0 grow-0 basis-[clamp(14rem,18vw,20rem)]">
+                <div key={p.id} className="min-w-0 shrink-0 grow-0 basis-1/3 pl-1">
                   <ProductCard p={p} />
                 </div>
               ))}

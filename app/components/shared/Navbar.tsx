@@ -114,7 +114,7 @@ export default function Navbar() {
             </button>
           </div>
           <Link href="/" className="absolute left-1/2 -translate-x-1/2">
-            <Image src="/logo/logo2.png" alt="POLARIZED-X" width={140} height={40} className="h-3 w-auto sm:h-4" priority />
+            <Image src="/logo/logo2.png" alt="POLARIZED-X" width={140} height={40} className="h-3.5 w-auto sm:h-4" priority />
           </Link>
           <div className="flex items-center">
             <Link href="/cart" className="relative p-1" aria-label="עגלת קניות">
@@ -146,15 +146,24 @@ export default function Navbar() {
 
         {/* Nav links */}
         <div className="hidden lg:flex items-center gap-8 shrink-0 lg:order-2 lg:mx-[clamp(0px,calc(45vw_-_576px),160px)]">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href}
-              className={`text-xl font-regular transition-colors whitespace-nowrap ${altTheme ? "text-black" : "text-white"}`}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.75")}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive =
+              link.href === "/"
+                ? pathname === "/"
+                : pathname === link.href || pathname.startsWith(`${link.href}/`);
+            return (
+              <Link key={link.href} href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={`text-xl transition-colors whitespace-nowrap ${
+                  isActive
+                    ? `font-bold ${altTheme ? "text-black" : "text-white"}`
+                    : `font-regular ${altTheme ? "text-black/70 hover:text-black" : "text-white/70 hover:text-white"}`
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Desktop actions — right side in RTL after swap */}

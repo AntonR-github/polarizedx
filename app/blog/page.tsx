@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import Navbar from "../components/shared/Navbar";
-import Footer from "../components/shared/Footer";
 import { getBlogs, type BlogPost } from "../../lib/cms";
 
 const FALLBACK_IMAGE = "/images/mockproduct.jpg";
@@ -53,12 +51,11 @@ export default async function BlogPage() {
 
   return (
     <>
-      <Navbar />
       <main className="flex-1 bg-black py-20 px-6 lg:px-12">
         <div dir="rtl" className="site-container">
 
           <div className="text-center mb-14">
-            <h1 className="title-h2 mb-4">{headerTitle}</h1>
+            <h1 className="title-h2 mb-4 mt-16">{headerTitle}</h1>
             <p className="text-2xl font-light text-white">{headerSubtitle}</p>
           </div>
 
@@ -96,7 +93,6 @@ export default async function BlogPage() {
 
         </div>
       </main>
-      <Footer />
     </>
   );
 }
