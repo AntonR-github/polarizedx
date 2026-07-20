@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "ducks.co.il" },
       { protocol: "https", hostname: "**.ducks.co.il" },
       { protocol: "https", hostname: "app.payper.co.il" },
+      { protocol: "https", hostname: "cmhstyptzkoiwswbhzen.supabase.co" },
       // Dev-only: lets next/image load CRM-hosted images while CRM_URL points at
       // the local CRM dev server. Scoped to that exact port to avoid the image
       // optimizer proxying arbitrary localhost ports/services.

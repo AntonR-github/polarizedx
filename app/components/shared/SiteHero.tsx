@@ -39,7 +39,7 @@ export default function SiteHero() {
       <div className="md:hidden">
         <div className="mt-34 sm:mt-10 relative min-h-110">
           <Image
-            src="/images/hero/heroimage.jpg"
+            src="/images/hero/fphero.jpg"
             alt=""
             fill
             priority
@@ -52,10 +52,10 @@ export default function SiteHero() {
             <h1 className="text-center font-black leading-[0.92] text-white text-5xl sm:text-6xl">
               משקפי שמש
               <br />
-              לכל רגע
+              POLARIZED-<img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
             </h1>
             <p className="text-center text-xl font-normal text-white/85 sm:text-lg">
-              עיצוב על זמני. הגנה מלאה.
+              ראייה חדה והגנת UV400 מלאה
             </p>
             <Link
               href="/shop"
@@ -98,7 +98,7 @@ export default function SiteHero() {
         <div className="relative min-h-100 lg:min-h-130 xl:min-h-160">
           {/* Full-bleed photo — runs under the promo panel so the blade reveals it */}
           <Image
-            src="/images/hero/heroimage.jpg"
+            src="/images/hero/fphero.jpg"
             alt=""
             fill
             priority
@@ -109,15 +109,14 @@ export default function SiteHero() {
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-black/45" />
 
           {/* Left: headline right-aligned, CTA + wordmark on the start edge */}
-          <div className="absolute inset-y-0 left-0 flex w-[52%] flex-col justify-center gap-4 px-8 lg:gap-5 lg:px-16">
-            <h1 dir="rtl" className="text-left font-semibold leading-[0.92] text-white text-[clamp(3.5rem,5.5vw,6.5rem)]">
+          <div className="absolute mt-15 inset-y-0 left-0 flex w-[52%] flex-col justify-center gap-4 px-8 lg:gap-5 lg:px-16">
+            <h1 dir="rtl" className="text-left font-bold leading-[0.92] text-white text-[clamp(1.5rem,3.5vw,4.5rem)]">
               משקפי שמש
               <br />
-              לכל רגע
+              POLARIZED-<img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
             </h1>
             <p dir="rtl" className="text-left font-normal text-white/85 text-[clamp(1.6rem,2.1vw,2.3rem)]">
-              עיצוב על זמני. הגנה מלאה.
-            </p>
+              ראייה חדה והגנת UV400 מלאה            </p>
             <Link
               href="/shop"
               dir="rtl"
