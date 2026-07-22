@@ -42,7 +42,7 @@ export default function HomeOffer() {
             <span>זוג שני</span>
             <strong className="inline-flex items-baseline gap-1 font-black">
               <span>ב-</span>
-              <span className="text-gold text-[1.3em] leading-[0.72]">99</span>
+              <span className="text-gold text-[1.3em] leading-[0.72]">199</span>
               <span>₪</span>
             </strong>
           </h3>

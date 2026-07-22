@@ -15,8 +15,6 @@ const collection = [
 
 const brand = [
   { label: "הסיפור שלנו", href: "/about" },
-  { label: "B2B לבעלי עסקים", href: "/b2b" },
-  { label: "שאלות נפוצות", href: "/faq" },
   { label: "צור קשר", href: "/contact" },
 ];
 

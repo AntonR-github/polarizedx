@@ -13,8 +13,6 @@ export default function B2bStand() {
         <div dir="rtl" className="order-2 flex flex-col justify-center bg-black px-8 py-12 text-center text-white sm:px-12 lg:order-1 lg:pl-16 lg:pr-32 lg:text-right">
           <h2 className="text-4xl font-normal leading-tight lg:text-5xl">הסטנד לחנות שלך.</h2>
           <p className="mt-2 text-3xl font-regular leading-snug text-white lg:text-4xl">
-            נראה מצוין.
-            <br />
             תופס מעט מקום.
             <br />
             משאיר רושם גדול.

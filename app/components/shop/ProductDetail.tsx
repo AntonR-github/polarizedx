@@ -134,7 +134,7 @@ export default function ProductDetail({ product, relatedProducts = [], reviews =
                   {product.badge}
                 </span>
               )}
-              <Image src={activeImg} alt={product.name} fill className="object-contain p-[8%]" />
+              <Image src={activeImg} alt={product.name} fill className="object-cover" />
             </div>
             {lifestyleImg && (
               <div className="relative order-2 min-h-45 border sm:min-h-0" style={{ background: "#d9d1c4", borderColor: LINE }}>
@@ -147,10 +147,10 @@ export default function ProductDetail({ product, relatedProducts = [], reviews =
                   <button
                     key={i}
                     onClick={() => setSelectedThumb(i)}
-                    className="grid h-18 w-21.5 shrink-0 place-items-center overflow-hidden border p-1 transition-transform hover:-translate-y-0.5"
+                    className="grid h-18 w-21.5 shrink-0 place-items-center overflow-hidden border transition-transform hover:-translate-y-0.5"
                     style={{ borderColor: selectedThumb === i ? INK : LINE, borderWidth: selectedThumb === i ? 2 : 1, background: PAPER_RAISED }}
                   >
-                    <Image src={img} alt="" width={80} height={62} className="h-full w-full object-contain" style={{ background: "#fff" }} />
+                    <Image src={img} alt="" width={80} height={62} className="h-full w-full object-cover" />
                   </button>
                 ))}
               </div>
@@ -303,7 +303,7 @@ export default function ProductDetail({ product, relatedProducts = [], reviews =
           <div dir="rtl" className="order-1 flex flex-col items-start justify-center gap-2 p-6 text-right sm:order-2 sm:p-9">
             <span dir="ltr" className="w-max text-sm font-black tracking-[0.12em]" style={{ color: "#705809" }}>PUT AN X ON IT</span>
             <h2 className="text-[clamp(2rem,3.8vw,2.75rem)] leading-[0.95] font-black" style={{ color: INK }}>
-              זוג שני <strong className="font-black whitespace-nowrap" style={{ color: "#705809" }}>ב-99 ₪</strong>
+              זוג שני <strong className="font-black whitespace-nowrap" style={{ color: "#705809" }}>ב-199 ₪</strong>
             </h2>
             <p className="max-w-[40ch] text-base leading-snug" style={{ color: INK_SOFT }}>
               בחרו כל שני דגמים, בכל שילוב, במחיר מבצע אחד.

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 
 
@@ -20,12 +19,6 @@ export default function AboutRetail() {
             מהממת ברחבי הארץ.
           </p>
           <p className="mt-9 text-2xl text-white sm:text-2xl">ובנינו מערך הפצה שמגיע אליכם עד הבית.</p>
-          <Link
-            href="/contact"
-            className="mt-7 inline-flex items-center gap-3 self-center bg-white px-6 py-3 text-xl font-semibold text-black transition-colors hover:bg-zinc-200 sm:self-start"
-          >
-            <span>בעל חנות - בואו נדבר </span>
-          </Link>
         </div>
 
         {/* Right: packaging on light gray */}

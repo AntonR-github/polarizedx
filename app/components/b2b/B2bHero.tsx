@@ -20,7 +20,7 @@ export default function B2bHero() {
         </div>
 
         {/* Left: background image + overlay content */}
-        <div className="relative order-2 w-full min-h-96 sm:min-h-0 sm:aspect-375/244 lg:order-1 lg:aspect-auto! lg:min-h-180!">
+        <div className="relative order-2 w-full min-h-96 sm:min-h-0 sm:aspect-375/244 lg:order-1 lg:aspect-auto! lg:min-h-135!">
           <Image
             src="/images/mobile/mobilebghomepage.jpg"
             alt=""

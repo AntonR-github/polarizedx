@@ -1,4 +1,4 @@
-export const SECOND_PAIR_PRICE = 99;
+export const SECOND_PAIR_PRICE = 199;
 
 interface PriceableItem {
   price: number;

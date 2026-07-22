@@ -37,10 +37,9 @@ export default function ShopHero() {
           <p className="text-3xl font-regular leading-tight lg:text-6xl">
             זוג שני
             <br className="hidden lg:block" />
-            {" "}ב-100₪
+            {" "}ב-199₪
           </p>
           <div className={`${inter.className} flex flex-col items-center`}>
-            <p className="text-2xl lg:text-2xl">6 דגמים</p>
             <p className="text-2xl lg:text-2xl">כל אחד עם ה-</p>
             <p className="text-8xl font-regular leading-none lg:text-8xl mt-2">
               <img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />
