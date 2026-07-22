@@ -53,23 +53,6 @@ export default function SuccessClient() {
         </div>
       </section>
 
-      <section style={{ background: SURFACE }}>
-        <div className="mx-auto grid max-w-3xl grid-cols-1 gap-6 px-6 py-12 sm:grid-cols-3 sm:py-16">
-          {[
-            { step: "01", text: "אורזים את ההזמנה שלך במחסן." },
-            { step: "02", text: "מקבלים SMS עם קישור למעקב אחר המשלוח." },
-            { step: "03", text: "המשלוח מגיע אליך עד 3 ימי עסקים." },
-          ].map(({ step, text }) => (
-            <div key={step} className="border-t-2 pt-3 text-center sm:text-right" style={{ borderColor: ACCENT }}>
-              <span dir="ltr" className="text-xs font-black tracking-widest" style={{ color: ACCENT }}>
-                {step}
-              </span>
-              <p className="mt-1 text-sm" style={{ color: MUTED }}>{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="px-6 pb-16" style={{ background: SURFACE }}>
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-3 border-t pt-10 sm:flex-row sm:justify-center" style={{ borderColor: LINE }}>
           <Link
