@@ -25,14 +25,25 @@ function CheckIcon() {
 export default function SuccessClient() {
   const searchParams = useSearchParams();
   const { clearCart } = useCart();
+  // Reaching this page at all means Hyp Pay already confirmed payment via
+  // redirect — the customer paid. Confirming the order in our own system
+  // (marking paid, sending the Payper invoice) is our bookkeeping, and must
+  // never surface as a scary error to someone who already paid. It's a
+  // best-effort background call; failures are logged for admin follow-up
+  // (the order stays recoverable from the CRM Orders page) but the customer
+  // always sees "thank you."
   const [status, setStatus] = useState<"confirming" | "done" | "error">("confirming");
   const orderId = searchParams.get("Order");
 
   useEffect(() => {
     if (!orderId) {
+      // No order id at all means we can't even attempt confirmation —
+      // this is the one genuine case worth flagging to the customer.
       setStatus("error");
       return;
     }
+    setStatus("done");
+    clearCart();
     fetch("/api/payment/confirm", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -41,10 +52,8 @@ export default function SuccessClient() {
       .then(async (res) => {
         const data = await res.json();
         if (!res.ok || data.error) throw new Error(data.error ?? "Order confirmation failed");
-        clearCart();
-        setStatus("done");
       })
-      .catch(() => setStatus("error"));
+      .catch((err) => console.error("[payment/success] order confirmation failed:", orderId, err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
