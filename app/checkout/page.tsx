@@ -101,9 +101,14 @@ export default function CheckoutPage() {
     form.firstName.trim() && form.lastName.trim() && form.email.trim() &&
     form.phone.trim() && form.street.trim() && form.houseNumber.trim() && form.city.trim();
 
+  function goToStep(next: Step) {
+    setStep(next);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   function handleContinue() {
     setSubmitted(true);
-    if (isShippingValid) setStep("payment");
+    if (isShippingValid) goToStep("payment");
   }
 
   async function handlePay() {
@@ -158,7 +163,7 @@ export default function CheckoutPage() {
                   <button
                     key={s}
                     type="button"
-                    onClick={() => s === "shipping" && setStep("shipping")}
+                    onClick={() => s === "shipping" && goToStep("shipping")}
                     className={`border px-5 py-2 text-sm font-semibold transition-colors ${
                       step === s
                         ? "border-black bg-black text-white"
@@ -234,7 +239,7 @@ export default function CheckoutPage() {
                     </div>
                     <button
                       type="button"
-                      onClick={() => setStep("shipping")}
+                      onClick={() => goToStep("shipping")}
                       className="mt-1 self-start text-xs text-black underline transition-opacity hover:opacity-60"
                     >
                       ערוך פרטים
