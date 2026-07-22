@@ -44,7 +44,7 @@ export default function Why() {
       <div dir="rtl" className="mx-auto max-w-[1200px] px-3 lg:px-6">
         <h2
           dir="rtl"
-          className="mb-8 flex items-center justify-end gap-2 whitespace-nowrap text-[clamp(1.45rem,5vw,4.35rem)] font-black lg:mb-10 lg:justify-start"
+          className="mb-8 flex items-center justify-start gap-2 whitespace-nowrap text-[clamp(1.45rem,5vw,4.35rem)] font-black lg:mb-10"
           style={{ color: "#11110f" }}
         >
           <span>למה</span>

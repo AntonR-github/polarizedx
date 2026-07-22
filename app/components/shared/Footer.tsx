@@ -200,7 +200,7 @@ export default function Footer() {
           </div>
 
           {/* Desktop: 5-column grid */}
-          <div className="hidden gap-8 md:grid" style={{ gridTemplateColumns: "1.15fr repeat(4,minmax(0,1fr))" }}>
+          <div className="hidden gap-8 md:grid" style={{ gridTemplateColumns: "1.15fr repeat(3,minmax(0,1fr)) 1.6fr" }}>
             <LinkColumn title="הקולקציה" links={collection} />
             <LinkColumn title="המותג" links={brand} />
             <LinkColumn title="שירות" links={service} />

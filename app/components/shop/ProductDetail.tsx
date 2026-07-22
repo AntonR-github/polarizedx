@@ -76,6 +76,7 @@ export default function ProductDetail({ product, relatedProducts = [], reviews =
   const [qty, setQty] = useState(1);
   const [selectedThumb, setSelectedThumb] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [showReview, setShowReview] = useState(false);
   const { addItem } = useCart();
   const { toggle, isFavorite } = useFavorites();
   const router = useRouter();
@@ -105,7 +106,7 @@ export default function ProductDetail({ product, relatedProducts = [], reviews =
   }
 
   return (
-    <section className="px-4 pt-8 pb-16 sm:px-6 sm:pt-10 sm:pb-24 lg:px-10" style={{ background: PAPER }}>
+    <section className="mt-20 px-4 pt-8 pb-16 sm:px-6 sm:pt-10 sm:pb-24 lg:px-10" style={{ background: PAPER }}>
       <div className="site-container" style={{ maxWidth: 1260 }}>
 
         <Link
@@ -181,10 +182,15 @@ export default function ProductDetail({ product, relatedProducts = [], reviews =
                 <span className="text-sm" style={{ color: INK_SOFT }}>אין חוות דעת עדיין</span>
               )}
             </div>
+            <button onClick={() => setShowReview(true)}
+              className="mb-4 w-max border px-4 py-2 text-sm font-bold text-[#11110f] transition-colors hover:bg-[#11110f] hover:text-[#fbf8f2]"
+              style={{ borderColor: INK }}>
+              כתבו חוות דעת
+            </button>
 
             <div className="mb-2 text-[clamp(1.75rem,3vw,2.2rem)] font-black" style={{ color: INK }}>{activePrice} ₪</div>
-            <div className="mb-4 flex items-center gap-2 text-sm font-bold" style={{ color: "#245b35" }}>
-              <span className="h-2 w-2 rounded-full" style={{ background: "#245b35" }} />
+            <div className="mb-4 flex items-center gap-2 text-base font-bold" style={{ color: "#22c55e" }}>
+              <span className="h-2 w-2 rounded-full" style={{ background: "#22c55e" }} />
               במלאי
             </div>
             {product.description && (
@@ -317,12 +323,10 @@ export default function ProductDetail({ product, relatedProducts = [], reviews =
         {relatedProducts.length > 0 && <RelatedProducts products={relatedProducts} />}
       </div>
 
-      {/* Reviews section */}
       <Reviews
-        reviews={reviews}
-        rating={reviews.length > 0 ? Math.round((reviews.reduce((s, r) => s + r.rating, 0) / reviews.length) * 10) / 10 : (product.rating ?? null)}
-        reviewCount={reviews.length > 0 ? reviews.length : (product.reviewCount ?? null)}
         productId={product.id}
+        showReview={showReview}
+        setShowReview={setShowReview}
       />
 
       {/* FAQ section */}
@@ -574,94 +578,17 @@ function StarInput({ value, onChange }: { value: number; onChange: (n: number) =
   );
 }
 
-function Reviews({ reviews, rating, reviewCount, productId }: { reviews: Review[]; rating: number | null; reviewCount: number | null; productId: string }) {
-  const [showReview, setShowReview] = useState(false);
+function Reviews({ productId, showReview, setShowReview }: { productId: string; showReview: boolean; setShowReview: (v: boolean) => void }) {
   const [userRating, setUserRating] = useState(0);
   const [reviewName, setReviewName] = useState("");
   const [reviewText, setReviewText] = useState("");
   const [reviewSent, setReviewSent] = useState(false);
   const [reviewSubmitting, setReviewSubmitting] = useState(false);
 
-  const [slideStart, setSlideStart] = useState(0);
-  const perPage = 3;
-  const displayCount = reviewCount ?? reviews.length;
-  const displayed = reviews.slice(slideStart, slideStart + perPage);
-  const canPrev = slideStart > 0;
-  const canNext = slideStart + perPage < reviews.length;
-  const Stars = ({ r, size = 18 }: { r: number; size?: number }) => (
-    <div className="flex gap-0.5">
-      {Array.from({ length: 5 }).map((_, n) => (
-        <svg key={n} xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24"
-          fill={n < r ? "#d9b538" : "#e5e0d3"} stroke={n < r ? "#d9b538" : "#e5e0d3"} strokeWidth="0.5">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-        </svg>
-      ))}
-    </div>
-  );
-
-  if (reviews.length === 0 && !rating) return null;
+  if (!showReview) return null;
 
   return (
-    <div className="site-container mt-16 border-t pt-10" style={{ maxWidth: 1260, borderColor: LINE }} dir="rtl">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-black" style={{ color: INK }}>חוות דעת לקוחות</h2>
-        {reviews.length > perPage && (
-          <div className="flex gap-2">
-            <button onClick={() => setSlideStart((s) => s + perPage)} disabled={!canNext}
-              className="grid h-11 w-11 place-items-center border transition-colors disabled:opacity-30"
-              style={{ borderColor: LINE, background: PAPER_RAISED, color: INK }}>←</button>
-            <button onClick={() => setSlideStart((s) => s - perPage)} disabled={!canPrev}
-              className="grid h-11 w-11 place-items-center border transition-colors disabled:opacity-30"
-              style={{ borderColor: LINE, background: PAPER_RAISED, color: INK }}>→</button>
-          </div>
-        )}
-      </div>
-
-      <div className="grid grid-cols-1 gap-px md:grid-cols-2 xl:grid-cols-4" style={{ background: LINE }}>
-        <div className="flex flex-col items-center justify-center gap-3 p-6" style={{ background: PAPER_RAISED }}>
-          {rating ? (
-            <>
-              <span className="text-5xl font-black" style={{ color: INK }}>{rating}</span>
-              <Stars r={Math.round(rating)} size={22} />
-              <span className="text-center text-sm" style={{ color: INK_SOFT }}>מבוסס על {displayCount} חוות דעת</span>
-            </>
-          ) : (
-            <span className="text-center text-sm" style={{ color: INK_SOFT }}>אין חוות דעת עדיין</span>
-          )}
-          <button onClick={() => setShowReview(true)}
-            className="w-full border py-2.5 text-sm font-bold text-[#11110f] transition-colors hover:bg-[#11110f] hover:text-[#fbf8f2]"
-            style={{ borderColor: INK }}>
-            כתבו חוות דעת
-          </button>
-        </div>
-
-        {displayed.map((r, i) => {
-          const date = new Date(r.createdAt).toLocaleDateString("he-IL", { day: "2-digit", month: "2-digit", year: "numeric" });
-          const avatarColors = ["#f87171", "#60a5fa", "#34d399", "#fbbf24", "#a78bfa", "#f472b6"];
-          const avatarBg = avatarColors[i % avatarColors.length];
-          return (
-            <div key={r.id} className="flex min-h-60 flex-col gap-3 p-5" style={{ background: PAPER_RAISED }}>
-              <div className="flex items-center justify-between gap-2">
-                <div className="flex flex-col gap-0.5">
-                  <span className="text-base font-bold" style={{ color: INK }}>{r.name}</span>
-                  <div className="flex items-center gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span className="text-xs font-medium" style={{ color: "#16a34a" }}>קנה מאומת</span>
-                  </div>
-                </div>
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full text-base font-bold text-white" style={{ background: avatarBg }}>
-                  {r.name.charAt(0)}
-                </div>
-              </div>
-              <Stars r={r.rating} />
-              <p className="flex-1 text-sm leading-relaxed" style={{ color: INK_SOFT }}>{r.text}</p>
-              <span className="mt-auto text-xs" style={{ color: INK_SOFT }}>{date}</span>
-            </div>
-          );
-        })}
-      </div>
-
-      {showReview && createPortal(
+      createPortal(
         <div className="fixed inset-0 flex items-center justify-center bg-black/60" style={{ zIndex: 9999 }} onClick={() => setShowReview(false)}>
           <div className="w-full max-w-lg flex flex-col gap-5 p-8" style={{ zIndex: 10000, background: PAPER_RAISED }} onClick={(e) => e.stopPropagation()}>
             {reviewSent ? (
@@ -715,8 +642,7 @@ function Reviews({ reviews, rating, reviewCount, productId }: { reviews: Review[
           </div>
         </div>,
         document.body
-      )}
-    </div>
+      )
   );
 }
 

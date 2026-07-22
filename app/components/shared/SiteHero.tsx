@@ -32,7 +32,6 @@ export default function SiteHero() {
             >
               לחץ לרכישה
             </Link>
-            <Image src="/images/hero/glogo.png" alt="POLARIZED-X" width={123} height={16} className="h-4.5 w-auto self-center" />
           </div>
         </div>
       </div>
@@ -54,7 +53,7 @@ export default function SiteHero() {
 
           {/* Left: headline right-aligned, CTA + wordmark on the start edge */}
           <div className="absolute mt-15 inset-y-0 left-0 flex w-[90%] flex-col justify-center gap-4 px-8 lg:gap-5 lg:px-6">
-            <h1 dir="rtl" className="text-right font-bold leading-[0.92] text-white text-[clamp(1.5rem,3.5vw,4.5rem)]">
+            <h1 dir="rtl" className="text-right font-bold leading-[1.15] text-white text-[clamp(1.5rem,3.5vw,4.5rem)]">
               משקפי שמש
               <br />
               <img src="/images/xmark.png" alt="X" className="inline-block h-[0.72em] w-auto align-baseline" />-POLARIZED
@@ -68,7 +67,6 @@ export default function SiteHero() {
             >
               לחץ לרכישה
             </Link>
-            <Image src="/images/hero/glogo.png" alt="POLARIZED-X" width={123} height={16} className="h-3.5 w-auto self-end lg:h-4.5" />
           </div>
 
         </div>

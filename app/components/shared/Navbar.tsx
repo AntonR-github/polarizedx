@@ -202,25 +202,41 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu overlay */}
       {mobileOpen && (
-        <div
-          className="lg:hidden border-t bg-white"
-          style={{ borderColor: "rgba(0,0,0,0.07)" }}
-        >
-          <div className="px-6 py-4 flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="py-3 px-3 rounded-lg text-2xl font-medium transition-colors"
-                style={{ color: "#000000" }}
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+        <div className="lg:hidden fixed inset-y-0 left-16 right-0 z-100 flex flex-col bg-black sm:left-20">
+          <div className="flex justify-start px-5 pt-6">
+            <button
+              onClick={() => setMobileOpen(false)}
+              aria-label="סגור תפריט"
+              className="p-1.5 text-white"
+            >
+              <span className="block scale-75">
+                <CloseIcon />
+              </span>
+            </button>
           </div>
+          <nav dir="rtl" className="flex flex-col gap-9 px-8 pt-10">
+            {navLinks.map((link) => {
+              const isActive =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname === link.href || pathname.startsWith(`${link.href}/`);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`text-right text-3xl font-extrabold transition-colors ${
+                    isActive ? "text-white" : "text-white/85 hover:text-white"
+                  }`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
         </div>
       )}
       {/* Search overlay */}
