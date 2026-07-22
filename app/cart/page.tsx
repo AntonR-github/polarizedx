@@ -56,12 +56,12 @@ export default function CartPage() {
                     key={item.id}
                     className="flex items-center gap-4 border border-zinc-200 bg-white p-4"
                   >
-                    <div className="relative h-24 w-24 shrink-0 bg-zinc-50 sm:h-28 sm:w-28">
+                    <div className="relative h-24 w-24 shrink-0 overflow-hidden bg-zinc-50 sm:h-28 sm:w-28">
                       <Image
                         src={item.image ?? FALLBACK_IMG}
                         alt={item.name}
                         fill
-                        className="object-contain p-2"
+                        className="object-cover"
                       />
                     </div>
 

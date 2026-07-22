@@ -117,14 +117,6 @@ export default function Navbar() {
             <Image src="/logo/logo2.png" alt="POLARIZED-X" width={140} height={40} className="h-3.5 w-auto sm:h-4" priority />
           </Link>
           <div className="flex items-center">
-            <Link href="/cart" className="relative p-1" aria-label="עגלת קניות">
-              <Image src="/icn/cart.png" alt="עגלה" width={24} height={24} className="icon-accent invert" />
-              {cartCount > 0 && (
-                <span className="absolute top-0.5 inset-e-0.5 text-white text-[10px] font-bold min-w-[16px] h-4 rounded-full flex items-center justify-center px-0.5" style={{ background: "#000000" }}>
-                  {cartCount}
-                </span>
-              )}
-            </Link>
             <Link href="/favorites" className="relative p-1" aria-label="מועדפים">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -132,6 +124,14 @@ export default function Navbar() {
               {favCount > 0 && (
                 <span className="absolute top-0.5 inset-e-0.5 text-white text-base font-bold min-w-[26px] h-[26px] rounded-full flex items-center justify-center px-1" style={{ background: "#e11d48" }}>
                   {favCount}
+                </span>
+              )}
+            </Link>
+            <Link href="/cart" className="relative p-1" aria-label="עגלת קניות">
+              <Image src="/icn/cart.png" alt="עגלה" width={24} height={24} className="icon-accent invert" />
+              {cartCount > 0 && (
+                <span className="absolute top-0.5 inset-e-0.5 text-white text-[10px] font-bold min-w-[16px] h-4 rounded-full flex items-center justify-center px-0.5" style={{ background: "#000000" }}>
+                  {cartCount}
                 </span>
               )}
             </Link>
