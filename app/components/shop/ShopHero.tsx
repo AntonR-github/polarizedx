@@ -35,9 +35,9 @@ export default function ShopHero() {
           className="mx-4 my-6 flex flex-col items-center justify-center gap-1 rounded-2xl bg-black px-6 py-6 text-center text-white lg:mx-0 lg:my-0 lg:gap-6 lg:rounded-none lg:py-12 lg:min-h-full"
         >
           <p className="text-3xl font-regular leading-tight lg:text-6xl">
-            זוג שני
+            2 זוגות
             <br className="hidden lg:block" />
-            {" "}ב-199₪
+            {" "}ב - 199 ש״ח
           </p>
           <div className={`${inter.className} flex flex-col items-center`}>
             <p className="text-2xl lg:text-2xl">כל אחד עם ה-</p>

@@ -131,7 +131,7 @@ export default function CartPage() {
                   </div>
                   {savings > 0 && (
                     <div className="flex justify-between">
-                      <span className="text-green-600">חיסכון בזוג שני</span>
+                      <span className="text-green-600">מבצע 2 זוגות ב - 199 ש״ח</span>
                       <span className="font-semibold text-green-600">-₪{savings}</span>
                     </div>
                   )}

@@ -39,11 +39,11 @@ export default function HomeOffer() {
             <span className="h-px flex-1" style={{ background: "rgba(128,101,27,.55)" }} />
           </span>
           <h3 className="flex items-baseline gap-2 text-4xl font-black leading-[0.92] lg:text-5xl" style={{ color: "#11110f" }}>
-            <span>זוג שני</span>
+            <span>2 זוגות</span>
             <strong className="inline-flex items-baseline gap-1 font-black">
-              <span>ב-</span>
+              <span>ב -</span>
               <span className="text-gold text-[1.3em] leading-[0.72]">199</span>
-              <span>₪</span>
+              <span>ש״ח</span>
             </strong>
           </h3>
           <p className="text-sm font-bold lg:text-base" style={{ color: "#5e5d57" }}>

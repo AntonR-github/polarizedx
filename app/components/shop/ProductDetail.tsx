@@ -303,7 +303,7 @@ export default function ProductDetail({ product, relatedProducts = [], reviews =
           <div dir="rtl" className="order-1 flex flex-col items-start justify-center gap-2 p-6 text-right sm:order-2 sm:p-9">
             <span dir="ltr" className="w-max text-sm font-black tracking-[0.12em]" style={{ color: "#705809" }}>PUT AN X ON IT</span>
             <h2 className="text-[clamp(2rem,3.8vw,2.75rem)] leading-[0.95] font-black" style={{ color: INK }}>
-              זוג שני <strong className="font-black whitespace-nowrap" style={{ color: "#705809" }}>ב-199 ₪</strong>
+              2 זוגות <strong className="font-black whitespace-nowrap" style={{ color: "#705809" }}>ב - 199 ש״ח</strong>
             </h2>
             <p className="max-w-[40ch] text-base leading-snug" style={{ color: INK_SOFT }}>
               בחרו כל שני דגמים, בכל שילוב, במחיר מבצע אחד.
